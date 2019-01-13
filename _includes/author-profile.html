@@ -63,7 +63,7 @@
       {% if author.blog %}
         <li>
           <a href="{{ author.blog }}" itemprop="url">
-            <i class="fab fa-fw fa-link" aria-hidden="true"></i> Blog
+            <i class="fab fa-fw fa-link" aria-hidden="true"></i> {{ site.data.ui-text[site.locale].website_label | default: "Blog" }}
           </a>
         </li>
       {% endif %}
