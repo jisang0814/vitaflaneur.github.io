@@ -69,7 +69,8 @@ author:
   email            : "vitaflaneur@gmail.com"
   github           : "vitaflaneur"
   facebook         :
-  uri              : "Blog", "http://leflaneur.tistory.com/" 
+  uri              : 
+  blog             : "http://leflaneur.tistory.com/" 
   youtube          : # "https://youtube.com/c/MichaelRoseDesign"
   
 
