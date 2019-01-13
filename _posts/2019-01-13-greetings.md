@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "Flâneur's View"
 date: 2019-01-13 22:00 +0900
 categories: 
