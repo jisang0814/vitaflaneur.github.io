@@ -67,6 +67,14 @@
           </a>
         </li>
       {% endif %}
+      
+      {% if author.blog %}
+        <li>
+          <a href="{{ author.blog }}" itemprop="sameAs">
+            <i class="fab fa-fw fa-blog" aria-hidden="true"></i> {{ site.data.ui-text[site.locale].website_label }}
+          </a>
+        </li>
+      {% endif %}
 
       {% if author.keybase %}
         <li>
@@ -256,14 +264,6 @@
         <li>
           <a href="https://vine.co/u/{{ author.vine }}" itemprop="sameAs">
             <i class="fab fa-fw fa-vine" aria-hidden="true"></i> Vine
-          </a>
-        </li>
-      {% endif %}
-      
-      {% if author.blog %}
-        <li>
-          <a href="{{ author.blog }}" itemprop="sameAs">
-            <i class="fab fa-fw fa-blog" aria-hidden="true"></i> Blog
           </a>
         </li>
       {% endif %}
