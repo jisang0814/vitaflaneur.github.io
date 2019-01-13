@@ -63,7 +63,7 @@ analytics:
 # Site Author
 author:
   name             : "Le Flâneur"
-  avatar           : "/assets/images/flaneur.jpeg" 
+  avatar           : "/assets/images/flaneur.jpg" 
   bio              : "Trying to make a convincing story."
   location         : "Korea"
   email            : "vitaflaneur@gmail.com"
