@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Flâneur's View"
-date: {{page.date}}
+date: "page.date"
 categories: 
   - MISC
 tags:
