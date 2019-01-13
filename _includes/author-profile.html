@@ -70,12 +70,12 @@
       
       {% if author.blog %}
         <li>
-          <a href="{{ author.blog }}" itemprop="sameAs">
-            <i class="fas fa-blog" aria-hidden="true"></i>  {{ site.data.ui-text[site.locale].website_label | default: "Other Blog" }}
+          <a href="{{ author.blog }}" itemprop="url">
+            <i class="fas fa-fw fa-link" aria-hidden="true"></i> {{ site.data.ui-text[site.locale].website_label | default: "Other Blog" }}
           </a>
         </li>
       {% endif %}
-
+      
       {% if author.keybase %}
         <li>
           <a href="https://keybase.io/{{ author.keybase }}" itemprop="sameAs">
