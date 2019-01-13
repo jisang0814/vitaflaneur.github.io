@@ -13,17 +13,6 @@ tags:
 
 ## 쿼리를 사용한 방법: `INSERT OVERWRITE`
 
-- 간단하게 Hive 쿼리를 통해서 테이블을 구성하는 작은 크기의 많은 수의 파일들을 합쳐주는 방법
-- 먼저 MapReduce 작업 수를 설정
-```sql
-set mapred.reduce.tasks=1
-```
-- 그리고 아래 쿼리를 실행해서 테이블 내용을 읽어서 다시 작은 수의 파일들로 병합
-```sql
-insert overwrite table <table_name> select * from <table_name> limit 999999999
-```
-
-- `limit` 다음에는 쿼리 실행 결과 출력되는 레코드 수보다 큰 값을 지정
 
 ## Hive Merge 설정을 통한 방법
 
