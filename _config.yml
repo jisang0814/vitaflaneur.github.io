@@ -70,9 +70,7 @@ author:
   github           : "vitaflaneur"
   facebook         :
   github           : "vitaflaneur"    
-  url              : 
-    - label: "Blog"
-    - url: "http://leflaneur.tistory.com/"
+  url              : "http://leflaneur.tistory.com/" - label: "Blog" 
   youtube          : # "https://youtube.com/c/MichaelRoseDesign"
   links:
     - label: "Email"
