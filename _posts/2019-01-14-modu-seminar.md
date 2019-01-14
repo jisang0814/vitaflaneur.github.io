@@ -1,6 +1,6 @@
 ---
 title: "Overview of DARPA AI Research in 모두연"
-date: 2019-01-14 20:00 +0900
+date: 2019-01-14 22:00 +0900
 categories: 
   - ML
   - Seminar
@@ -31,14 +31,14 @@ tags:
 
 
 
-### Domain-specific system on chip(DSSoC)
+  ### Domain-specific system on chip(DSSoC)
 
-- 서로 다른 장점을 가진 칩틀을 구성하여 다양한 특정 도메인에 최적화된 연산을 최소의 cost로 실행하도록 하는 연구
-- Criteria: 최소 5개의 application의 동작을 5ns 시간 내에 스케쥴링 처리 + power, latency, energy 등을 효율적으로
-- 강화학습을 이용한 Intelligent Scheduler를 구현하는 것이 목표
-- 실행시간 내에 Scheduler를 구현: Online-decision을 구현
-- 실제 데이터가 없이 시뮬레이션 데이터를 바탕으로 구현
-- OOD detection이 가능한 모델을 구현
+  - 서로 다른 장점을 가진 칩틀을 구성하여 다양한 특정 도메인에 최적화된 연산을 최소의 cost로 실행하도록 하는 연구
+  - Criteria: 최소 5개의 application의 동작을 5ns 시간 내에 스케쥴링 처리 + power, latency, energy 등을 효율적으로
+  - 강화학습을 이용한 Intelligent Scheduler를 구현하는 것이 목표
+  - 실행시간 내에 Scheduler를 구현: Online-decision을 구현
+  - 실제 데이터가 없이 시뮬레이션 데이터를 바탕으로 구현
+  - OOD detection이 가능한 모델을 구현
 
 
 
