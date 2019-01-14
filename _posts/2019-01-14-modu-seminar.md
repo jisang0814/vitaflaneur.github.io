@@ -23,10 +23,10 @@ tags:
 
 - LwLL를 위해 AMASE라는 프레임워크를 준비중
 - Aerospace & Defense 에서 활용할 수 있는 모델을 만드는 중.
-- Costly data, severe consequence가 특징
+  - Costly data, severe consequence가 특징
 - "Small data is the future of AI"
 - "Uncertainty really matters"
-- Tactical AI?
+- Tactical AI
 - Surprise Based Active Learning
 
 
@@ -39,12 +39,12 @@ tags:
 - 실행시간 내에 Scheduler를 구현: Online-decision을 구현
 - 실제 데이터가 없이 시뮬레이션 데이터를 바탕으로 구현
 - OOD detection이 가능한 모델을 구현
--  
 
-### SafeAI Lab
+
+
+## SafeAI Lab
 
 - Uncertainty quantification, Out-of-distribution detection에 대한 연구 
 - 관련 코드들 재현+reusability 향상 등
 - higher api를 활용하는 걸 추구
 - 현재는 predictive uncertainty model에 특화된 라이브러리 모듈 구현을 목표로 하는 중
-- 
