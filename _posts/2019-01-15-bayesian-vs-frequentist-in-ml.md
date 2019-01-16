@@ -20,7 +20,7 @@ AFAIK, 빈도주의자 관점이든 베이지안 관점이든 사용하는 Proba
 
 - 불확실성(Uncertainty) 하에서 일어나는 어떤 이벤트가 있을 때, 빈도주의자 관점에서는 이 이벤트에 대한 데이터를 확률시행(random experiment)의 결과로 보고, 이를 반복하여 관찰해 나온 상대적 빈도(relative frequency)를 해당 이벤트의 불확실성에 대한 척도(measure), 즉 확률(probability)로 본다. 즉, 이 관점 하에서는 확률은 해당 이벤트의 발생가능도(likelihood, propensity, ...)를 표현하는 데 활용된다. 
 
-- ground truth를 모수 $\mathcal{T}$로, 데이터를 $\mathcal{D}$로 추상화하면 $P(\mathcal{D}| \mathcal{T})$로 표현되는 구조를 활용한 통계적 추정을 하는 것이다. 추정 자체에서는 오차를 고려하기 위해 $\mathcal{D}$에 대한 분포를 나타내는 $P(\mathcal{D})$를 활용하기도 하지만, $\mathcal{T}$는 고정되어 있어 $P(\mathcal{T})$를 고려하진 않는다. 
+- ground truth를 모수 $\mathcal{T}$로, 데이터를 $\mathcal{D}$로 추상화하면 $P(\mathcal{D}\vert \mathcal{T})$로 표현되는 구조를 활용한 통계적 추정을 하는 것이다. 추정 자체에서는 오차를 고려하기 위해 $\mathcal{D}$에 대한 분포를 나타내는 $P(\mathcal{D})$를 활용하기도 하지만, $\mathcal{T}$는 고정되어 있어 $P(\mathcal{T})$를 고려하진 않는다. 
 
 - 즉, **상대적 빈도를 통해 발생가능도를 추정함으로써 불확실성을 발생시키는 고정된 구조를 해석하는 것**이 빈도주의자 관점의 방식이라 할 수 있을 것이다. 
 
@@ -28,7 +28,7 @@ AFAIK, 빈도주의자 관점이든 베이지안 관점이든 사용하는 Proba
 
 - [베이지안 관점](https://en.wikipedia.org/wiki/Bayesian_probability){:target="_blank"}에서는 불확실성을 야기하는 구조에 대한 주관적인 믿음(subjective belief)이 있고, 이를 데이터를 통해 수정하는 방식으로 inference가 이루어진다. 
 - 불확실성 하에서 일어나는 어떤 이벤트가 있을 때, 관찰자는 이 이벤트가 어떠한 구조의 불확실성을 가지고 있다는 주관적인 가설을 가지고 있는데, 이 가설을 얼마나 신뢰할 수 있느냐를 사전확률(prior)로 나타낸다. 해당 이벤트에 대한 데이터는 발생한 증거(evidence)로서, 관찰자는 가지고 있던 가설 하에서 이 데이터가 얼마나 발생가능했는지(likelihood)를 활용해 사전의 가설을 수정한 새로운 가설을 얻게 되고, 이 새로운 가설에 대한 신뢰도를 사후확률(posterior)로 표현한다. 
-- 사전 가설을 $\mathcal{H}$로, 데이터를 $\mathcal{D}$로 추상화하면 $P(\mathcal{H'}) = P(\mathcal{H}| \mathcal{D}) \propto P(\mathcal{D}| \mathcal{H}) \times P(\mathcal{H})$로 표현되는 구조를 활용한 통계적 추정을 하는 것이다. $P(\mathcal{H})$를 prior, $P(\mathcal{D}| \mathcal{H})$를 likelihood, $ P(\mathcal{H}| \mathcal{D})$를 posterior로 부른다. 
+- 사전 가설을 $\mathcal{H}$로, 데이터를 $\mathcal{D}$로 추상화하면 $P(\mathcal{H'}) = P(\mathcal{H}\vert \mathcal{D}) \propto P(\mathcal{D}\vert \mathcal{H}) \times P(\mathcal{H})$로 표현되는 구조를 활용한 통계적 추정을 하는 것이다. $P(\mathcal{H})$를 prior, $P(\mathcal{D}\vert \mathcal{H})$를 likelihood, $ P(\mathcal{H}\vert \mathcal{D})$를 posterior로 부른다. 
 - 즉, **불확실성을 발생시키는 구조에 대한 가설의 신뢰도를 확률로 정량화 하고 데이터를 통해 이 가설을 수정해 나가는 것**이 베이지안 관점의 방식이라 할 수 있다. 
 
 ------
@@ -71,9 +71,9 @@ AFAIK, 빈도주의자 관점이든 베이지안 관점이든 사용하는 Proba
 
 - 빈도주의자 통계학의 추정을 언급하기 위해서는 우선 sampling distribution에 대해서 언급을 해야 한다. sampling distribution을 계산하기 위해 크게 두 가지 접근법이 있는데, Large sample theory로 analytic하게 접근하거나 bootstrap과 같은 Monte Carlo(MC) 테크닉을 사용하는 것이다. 	
   - 다음 함수들은 빈도주의자 관점과 Large sample theory에서 활용되는 함수들이며 알아둘 필요가 있다. 
-    - score function: $ s(\hat{\theta}) \triangleq \nabla \mathop{log}p(\mathcal{D}| \theta)| _{\hat{\theta}}​$, log-likelihood의 $\hat{\theta}​$에서의 기울기. 
-    - observed information matrix: $ J(\hat{\theta}(\mathcal{D})) \triangleq -\nabla s(\hat{\theta}) =  - \nabla^2 \mathop{log}p(\mathcal{D}| \theta)|_{\hat{\theta}}$, negative score function의 $\hat{\theta}$에서의 기울기, 혹은 negative log-likelihood의  $\hat{\theta}$에서의 Hessian. 
-    - Fisher information matrix: $ I_N (\hat{\theta}| \theta^{\ast}) \triangleq \mathop{var}_{\theta^{\ast}} \left[ \frac{d}{d\theta} \mathop{log} p(\mathcal{D}| \theta) | _{\hat{\theta}} \right] \overset{\hat{\theta}=MLE}{=} \mathbb{E} [ J(\hat{\theta}| \mathcal{D})] ​$
+    - score function: $ s(\hat{\theta}) \triangleq \nabla \mathop{log}p(\mathcal{D}\vert \theta)\vert _{\hat{\theta}}​$, log-likelihood의 $\hat{\theta}​$에서의 기울기. 
+    - observed information matrix: $ J(\hat{\theta}(\mathcal{D})) \triangleq -\nabla s(\hat{\theta}) =  - \nabla^2 \mathop{log}p(\mathcal{D}\vert \theta)\vert_{\hat{\theta}}$, negative score function의 $\hat{\theta}$에서의 기울기, 혹은 negative log-likelihood의  $\hat{\theta}$에서의 Hessian. 
+    - Fisher information matrix: $ I_N (\hat{\theta}\vert \theta^{\ast}) \triangleq \mathop{var}_{\theta^{\ast}} \left[ \frac{d}{d\theta} \mathop{log} p(\mathcal{D}\vert \theta) \vert _{\hat{\theta}} \right] \overset{\hat{\theta}=MLE}{=} \mathbb{E} [ J(\hat{\theta}\vert \mathcal{D})] ​$
 
 - 이렇게 구한 sampling distribution을 활용해서 Maximum Likelihood Estimator(MLE)로 point estimation을 하거나 confidence interval을 구할 수 있다. 
 
@@ -96,7 +96,7 @@ AFAIK, 빈도주의자 관점이든 베이지안 관점이든 사용하는 Proba
 #### - 빈도주의자
 
 -  빈도주의자의 경우 risk function을 결정 이론에 활용한다. 
-  -  risk function: $R(\theta^{\ast}, \delta ) \triangleq \mathbb{E}_{p(\tilde{\mathcal{D}}|\theta^{\ast})} \left [ L(\theta^{\ast} , \delta(\tilde{\mathcal{D}})) \right] = \int L(\theta^{\ast}, \delta(\tilde{\mathcal{D}}))p(\tilde{\mathcal{D}}| \theta^{\ast})d\tilde{\mathcal{D}}$ 
+  -  risk function: $R(\theta^{\ast}, \delta ) \triangleq \mathbb{E}_{p(\tilde{\mathcal{D}}\vert\theta^{\ast})} \left [ L(\theta^{\ast} , \delta(\tilde{\mathcal{D}})) \right] = \int L(\theta^{\ast}, \delta(\tilde{\mathcal{D}}))p(\tilde{\mathcal{D}}\vert \theta^{\ast})d\tilde{\mathcal{D}}$ 
   -  일례로 $\theta^{\ast}$를 안다는 가정하에 L2 loss를 생각하면 위 식은 MSE가 되는 것을 알 수 있다. 
 -  문제는 이때 우리가  $\theta^{\ast}$ 을 알지 못한다는 것이다. 따라서 $R(\theta^{\ast}, \delta )$를 $R(\delta)$의 형태로 만들어야 한다. 이를 해결하는 방법으로 bayes risk, minimax risk 등이 있다. 
   -  Bayes risk: $R_B(\delta) \triangleq \mathbb{E}[R(\theta^{\ast}, \delta)]=\displaystyle \int R(\theta^{\ast}, \delta)p(\theta^{\ast} )d\theta^{\ast}$  
@@ -123,26 +123,26 @@ AFAIK, 빈도주의자 관점이든 베이지안 관점이든 사용하는 Proba
 
 - 결정 이론에 대한 베이지안의 접근은 사후 예상 손실(posterior expected loss)을 최소화 하는 것이다. 0-1 loss일 경우 MAP가, L2 loss의 경우 posterior mean이, L1 loss일 경우 posterior median이 최적의 결정이 된다. KL loss를 사용할 수도 있다. 
 
-- Model selection의 경우 모든 가능한 모델에 대해서 CV을 해서 구할 수도 있다. 그러나 그보다는 Bayesian model selection을 활용하는 것이 효율적일 수 있다.  즉, $p(m| \mathcal{D}) = \frac{p(\mathcal{D}| m)p(m)}{\sum_{m\in\mathcal{M}}{p(m,\mathcal{D})}}​$에서부터 MAP, $\hat{m}=\mathop{argmax} p(m| \mathcal{D})​$를 계산하는 것이다. 특히, 모델이 uniform prior를 가지고 있다고 가정하면, $\hat{m}=\mathop{argmax} p(m| \mathcal{D})=\mathop{argmax} p(\mathcal{D}| m) =\mathop{argmax}\int p(\mathcal{D}| \theta)p(\theta| m) d\theta ​$ 와 같이 쓸 수 있다. 이때 사용된 적분을 marginal likelihood라고 부르며, 이 방식으로 model selection을 할 경우 무조건 복잡한 모델이 선호되는 걸 막는 Bayesian's Occam's razor 효과를 갖는다. 
+- Model selection의 경우 모든 가능한 모델에 대해서 CV을 해서 구할 수도 있다. 그러나 그보다는 Bayesian model selection을 활용하는 것이 효율적일 수 있다.  즉, $p(m\vert \mathcal{D}) = \frac{p(\mathcal{D}\vert m)p(m)}{\sum_{m\in\mathcal{M}}{p(m,\mathcal{D})}}​$에서부터 MAP, $\hat{m}=\mathop{argmax} p(m\vert \mathcal{D})​$를 계산하는 것이다. 특히, 모델이 uniform prior를 가지고 있다고 가정하면, $\hat{m}=\mathop{argmax} p(m\vert \mathcal{D})=\mathop{argmax} p(\mathcal{D}\vert m) =\mathop{argmax}\int p(\mathcal{D}\vert \theta)p(\theta\vert m) d\theta ​$ 와 같이 쓸 수 있다. 이때 사용된 적분을 marginal likelihood라고 부르며, 이 방식으로 model selection을 할 경우 무조건 복잡한 모델이 선호되는 걸 막는 Bayesian's Occam's razor 효과를 갖는다. 
 
 - 위 marginal likelihood의 적분은 계산하기 어려운 경우가 많다. 따라서 이를 근사하여 사용하곤 하는데, 가장 잘 알려진 방법은 Bayesian Information Criterion (BIC)을 활용하는 것이다. 
 
-  - $$BIC \triangleq \mathop{log}p(\mathcal{D}| \hat{\theta}_{MLE}) - \frac{dof(\hat{\theta}_{MLE})}{2} \mathop{log}N \approx \mathop{log}p(\mathcal{D})$$
+  - $$BIC \triangleq \mathop{log}p(\mathcal{D}\vert \hat{\theta}_{MLE}) - \frac{dof(\hat{\theta}_{MLE})}{2} \mathop{log}N \approx \mathop{log}p(\mathcal{D})$$
 
 - 또한, full bayesian treatment라고도 불리우는 hierarchical bayesian model (HBM)을 사용할 수도 있다.  HBM은 hyperparameter를 도입함으로써 모델 parameter의 분포를 표현하는 방식으로 나타난다. 다만, HBM은 계산이 어려운 경우가 많다. 때문에 empirical bayesian model (EBM)을 활용해 근사하곤 한다. 
 
 - 모수적 모델을 가정하고 parameter를 $\theta$, hyperparameter를 $\eta$로 표현할 때, 
 
-  $$\displaystyle p(\theta| \mathcal{D}) = \frac{p(\mathcal{D}| \theta)p(\theta)}{p(\mathcal{D})}= \frac{p(\mathcal{D}| \theta)}{p(\mathcal{D})}\int{p(\theta| \eta)p(\eta)d\eta} $$  
+  $$\displaystyle p(\theta\vert \mathcal{D}) = \frac{p(\mathcal{D}\vert \theta)p(\theta)}{p(\mathcal{D})}= \frac{p(\mathcal{D}\vert \theta)}{p(\mathcal{D})}\int{p(\theta\vert \eta)p(\eta)d\eta} $$  
   로 표현되는 HBM의 형식에서 적분이 어렵기 때문에,   
-  $$\displaystyle p(\theta| \mathcal{D}) = \int {p(\theta|  \eta,\mathcal{D})p(\eta| \mathcal{D})d\eta} = \int{\frac{p(\mathcal{D}| \theta)p(\theta| \eta)}{p(\mathcal{D}| \eta)}p(\eta| \mathcal{D})d\eta} $$   
-  $$\displaystyle p(\eta| \mathcal{D})=\int{p(\eta| \theta)p(\theta| \mathcal{D})d\theta}$$  
+  $$\displaystyle p(\theta\vert \mathcal{D}) = \int {p(\theta\vert  \eta,\mathcal{D})p(\eta\vert \mathcal{D})d\eta} = \int{\frac{p(\mathcal{D}\vert \theta)p(\theta\vert \eta)}{p(\mathcal{D}\vert \eta)}p(\eta\vert \mathcal{D})d\eta} $$   
+  $$\displaystyle p(\eta\vert \mathcal{D})=\int{p(\eta\vert \theta)p(\theta\vert \mathcal{D})d\theta}$$  
 
-  와 같이 표현하고,  $\eta^{\ast} = \mathop{argmax}  p(\eta| \mathcal{D})$를 추정하여,   
-  $$\displaystyle p(\theta| \mathcal{D})\simeq \frac{p(\mathcal{D}| \theta)p(\theta| \eta^{\ast})}{p(\mathcal{D}| \eta^{\ast})} $$  
+  와 같이 표현하고,  $\eta^{\ast} = \mathop{argmax}  p(\eta\vert \mathcal{D})$를 추정하여,   
+  $$\displaystyle p(\theta\vert \mathcal{D})\simeq \frac{p(\mathcal{D}\vert \theta)p(\theta\vert \eta^{\ast})}{p(\mathcal{D}\vert \eta^{\ast})} $$  
   로 나타내면 EM algorithm으로 사후확률이 추정가능하다. 이 과정을 EBM이라 부른다. 
 
-- $\eta^{\ast}$의 추정에서 균등사전확률을 가정하면, $\eta^{\ast} = \mathop{argmax}  p(\eta| \mathcal{D}) =  \mathop{argmax}  p(\mathcal{D}| \eta) $ 가 된다. 따라서 EBM을 type II maximum likelihood라고 부르며, ML에서는 evidence procedure라고 부르기도 한다. 또한, EBM은 prior가 data에 독립적이어야 한다는 원칙을 위배함으로써 계산적인 효용을 얻는 방식이다. 
+- $\eta^{\ast}$의 추정에서 균등사전확률을 가정하면, $\eta^{\ast} = \mathop{argmax}  p(\eta\vert \mathcal{D}) =  \mathop{argmax}  p(\mathcal{D}\vert \eta) $ 가 된다. 따라서 EBM을 type II maximum likelihood라고 부르며, ML에서는 evidence procedure라고 부르기도 한다. 또한, EBM은 prior가 data에 독립적이어야 한다는 원칙을 위배함으로써 계산적인 효용을 얻는 방식이다. 
 
 
 
