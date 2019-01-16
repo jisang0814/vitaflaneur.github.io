@@ -133,8 +133,8 @@ tags:
   $$\displaystyle p(\theta|\mathcal{D}) = \frac{p(\mathcal{D}|\theta)p(\theta)}{p(\mathcal{D})}= \frac{p(\mathcal{D}|\theta)}{p(\mathcal{D})}\int{p(\theta|\eta)p(\eta)d\eta} $$
 
   로 표현되는 HBM의 형식에서 적분이 어렵기 때문에, 
-  $$\displaystyle p(\theta|\mathcal{D}) = \int {p(\theta| \eta,\mathcal{D})p(\eta|\mathcal{D})d\eta} = \int{\frac{p(\mathcal{D}|\theta)p(\theta|\eta)}{p(\mathcal{D}|\eta)}p(\eta|\mathcal{D})d\eta}  ​$$ 
-  $$\displaystyle p(\eta|\mathcal{D})=\int{p(\eta|\theta)p(\theta|\mathcal{D})d\theta}​$$
+  $$\displaystyle p(\theta|\mathcal{D}) = \int {p(\theta| \eta,\mathcal{D})p(\eta|\mathcal{D})d\eta} = \int{\frac{p(\mathcal{D}|\theta)p(\theta|\eta)}{p(\mathcal{D}|\eta)}p(\eta|\mathcal{D})d\eta} $$ 
+  $$\displaystyle p(\eta|\mathcal{D})=\int{p(\eta|\theta)p(\theta|\mathcal{D})d\theta}$$
   와 같이 표현하고,  $\eta^* = \mathop{argmax}  p(\eta|\mathcal{D})​$를 추정하여, 
   $$\displaystyle p(\theta|\mathcal{D})\simeq \frac{p(\mathcal{D}|\theta)p(\theta|\eta^*)}{p(\mathcal{D}|\eta^*)} ​$$
   로 나타내면 EM algorithm으로 사후확률이 추정가능하다. 이 과정을 EBM이라 부른다. 
