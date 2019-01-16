@@ -109,17 +109,17 @@ AFAIK, 빈도주의자 관점이든 베이지안 관점이든 사용하는 Proba
 -  빈도주의자 결정 이론에서 risk의 계산은 실제 데이터 $\mathcal{D}$의 분포를 알아야 수행될 수 있다. 이를 알 수 없는 경우가 많기 때문에 $L(\theta, \delta(\mathcal{D}))$가 아닌 $L(y, \delta(x))$를 사용해 정의한다. 이때 $y$ 는 참이지만 알려지지 않은 반응값이고, $\delta(x)$는 입력 x에 대해 주어진 예측값이다. $p_{\ast}$ 가 unknown nature's distribution이라 가정하면 빈도주의자 관점의 리스크는 아래와 같이 표현되고, 이를 empirical distribution으로 대체하는 empirical risk를 정의할 수 있다. 
   -  Frequentist risk: $$R(p_{\ast}, \delta ) \triangleq \mathbb{E}_{(\mathbf{x},y) \sim p_{\ast}} \left[ L(y, \delta(\mathbf{x}))\right] = \underset{\mathbf{x}}{\sum}\underset{\mathbf{y}}{\sum}L(y, \delta(\mathbf{x})) p_{\ast}(\mathbf{x},y)$$ 
   -  Empirical risk: $$R_{emp}(\mathcal{D}) \triangleq R(p_{amp}, \delta ) = \frac{1}{N} \sum_{i=1}^{N}L(y_i, \delta(\mathbf{x}_i)) $$ 
-  -  Empirical risk minimization (ERM): $\delta_{ERM}(\mathcal{D}) = \mathop{argmin}_{\delta} R_{emp}(\mathcal{D},\delta)$
+  -  Empirical risk minimization (ERM): $$\delta_{ERM}(\mathcal{D}) = \mathop{argmin}_{\delta} R_{emp}(\mathcal{D},\delta)$$
   -  Nature's distribution과 empirical distribution이 같을 경우 empirical risk는 bayes risk와 동일하다. 
 -  ERM은 드러난 데이터 만으로 분포를 가정해 추정을 하는 방식이기 때문에 overfitting의 위험이 있고 이를 피하기 위해 regularization 을 해야한다. 
-  -  Regularized risk minimization (RRM): $\delta_{\lambda}=\mathop{argmin}_{\delta}[R_{emp}(\mathcal{D},\delta) + \lambda C(\delta)]$
+  -  Regularized risk minimization (RRM): $$\delta_{\lambda}=\mathop{argmin}_{\delta}[R_{emp}(\mathcal{D},\delta) + \lambda C(\delta)]$$
 - 그러나 regularization strength인 $\lambda$를 정하는 문제를 해결해야 한다. 이를 해결하는 방식을 structural risk minimization이라고 부르고, 흔히 Cross validation(CV)와 theoretical upper bounds를 활용한다. 
   -  Theoretical upper bound: $P \left(\underset{h \in \mathcal{H}}{\mathop{max}} \lvert R_{emp}(\mathcal{D},h) -R(p_{\ast} , h) \rvert>\epsilon \right) \leq 2dim(\mathcal{H})e^{-2N\epsilon^2}$
 -  ERM과 RRM이 구하기 어려울 경우에는 surrogate loss function을 사용한다. log loss나 hinge loss가 그 예이다. 
 
 
 
-####- 베이지안
+#### - 베이지안
 
 - 결정 이론에 대한 베이지안의 접근은 사후 예상 손실(posterior expected loss)을 최소화 하는 것이다. 0-1 loss일 경우 MAP가, L2 loss의 경우 posterior mean이, L1 loss일 경우 posterior median이 최적의 결정이 된다. KL loss를 사용할 수도 있다. 
 
@@ -132,14 +132,14 @@ $$BIC \triangleq \mathop{log}p(\mathcal{D}\vert \hat{\theta}_{MLE}) - \frac{dof(
 
 - 모수적 모델을 가정하고 parameter를 $\theta$, hyperparameter를 $\eta$로 표현할 때, 
 
-  $$\displaystyle p(\theta\vert \mathcal{D}) = \frac{p(\mathcal{D}\vert \theta)p(\theta)}{p(\mathcal{D})}= \frac{p(\mathcal{D}\vert \theta)}{p(\mathcal{D})}\int{p(\theta\vert \eta)p(\eta)d\eta} $$  
+  $$p(\theta\vert \mathcal{D}) = \frac{p(\mathcal{D}\vert \theta)p(\theta)}{p(\mathcal{D})}= \frac{p(\mathcal{D}\vert \theta)}{p(\mathcal{D})}\int{p(\theta\vert \eta)p(\eta)d\eta} $$  
   로 표현되는 HBM의 형식에서 적분이 어렵기 때문에,   
   
-  $$\displaystyle p(\theta\vert \mathcal{D}) = \int {p(\theta\vert  \eta,\mathcal{D})p(\eta\vert \mathcal{D})d\eta} = \int{\frac{p(\mathcal{D}\vert \theta)p(\theta\vert \eta)}{p(\mathcal{D}\vert \eta)}p(\eta\vert \mathcal{D})d\eta} $$   
+  $$p(\theta\vert \mathcal{D}) = \int {p(\theta\vert  \eta,\mathcal{D})p(\eta\vert \mathcal{D})d\eta} = \int{\frac{p(\mathcal{D}\vert \theta)p(\theta\vert \eta)}{p(\mathcal{D}\vert \eta)}p(\eta\vert \mathcal{D})d\eta} $$   
   $$\displaystyle p(\eta\vert \mathcal{D})=\int{p(\eta\vert \theta)p(\theta\vert \mathcal{D})d\theta}$$  
 
   와 같이 표현하고,  $\eta^{\ast} = \mathop{argmax}  p(\eta\vert \mathcal{D})$를 추정하여,   
-  $$\displaystyle p(\theta\vert \mathcal{D})\simeq \frac{p(\mathcal{D}\vert \theta)p(\theta\vert \eta^{\ast})}{p(\mathcal{D}\vert \eta^{\ast})} $$  
+  $$p(\theta\vert \mathcal{D})\simeq \frac{p(\mathcal{D}\vert \theta)p(\theta\vert \eta^{\ast})}{p(\mathcal{D}\vert \eta^{\ast})} $$  
   로 나타내면 EM algorithm으로 사후확률이 추정가능하다. 이 과정을 EBM이라 부른다. 
 
 - $\eta^{\ast}$의 추정에서 균등사전확률을 가정하면, $\eta^{\ast} = \mathop{argmax}  p(\eta\vert \mathcal{D}) =  \mathop{argmax}  p(\mathcal{D}\vert \eta) $ 가 된다. 따라서 EBM을 type II maximum likelihood라고 부르며, ML에서는 evidence procedure라고 부르기도 한다. 또한, EBM은 prior가 data에 독립적이어야 한다는 원칙을 위배함으로써 계산적인 효용을 얻는 방식이다. 
