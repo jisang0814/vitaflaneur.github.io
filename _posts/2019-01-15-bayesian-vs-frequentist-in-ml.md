@@ -72,8 +72,8 @@ tags:
 - 빈도주의자 통계학의 추정을 언급하기 위해서는 우선 sampling distribution에 대해서 언급을 해야 한다. sampling distribution을 계산하기 위해 크게 두 가지 접근법이 있는데, Large sample theory로 analytic하게 접근하거나 bootstrap과 같은 Monte Carlo(MC) 테크닉을 사용하는 것이다. 	
   - 다음 함수들은 빈도주의자 관점과 Large sample theory에서 활용되는 함수들이며 알아둘 필요가 있다. 
     - score function: $ s(\hat{\theta}) \triangleq \nabla \mathop{log}p(\mathcal{D}\mid\theta)\mid_{\hat{\theta}}$, log-likelihood의 $\hat{\theta}$에서의 기울기. 
-    - observed information matrix: $ J(\hat{\theta}(\mathcal{D})) \triangleq -\nabla s(\hat{\theta}) =  - \nabla^2 \mathop{log}p(\mathcal{D}\mid\theta)\mid_{\hat{\theta}}​$, negative score function의 $\hat{\theta}​$에서의 기울기, 혹은 negative log-likelihood의  $\hat{\theta}​$에서의 Hessian. 
-    - Fisher information matrix: $ I_N (\hat{\theta}\mid\theta^*) \triangleq \mathop{var}_{\theta^*} \left[ \frac{d}{d\theta} \mathop{log} p(\mathcal{D}\mid\theta)\mid_{\hat{\theta}}\right] \overset{\hat{\theta}=MLE}{=} \mathbb{E} \left[ J(\hat{\theta}\mid\mathcal{D}) \right] ​$
+    - observed information matrix: $ J(\hat{\theta}(\mathcal{D})) \triangleq -\nabla s(\hat{\theta}) =  - \nabla^2 \mathop{log}p(\mathcal{D}\mid\theta)\mid_{\hat{\theta}}$, negative score function의 $\hat{\theta}$에서의 기울기, 혹은 negative log-likelihood의  $\hat{\theta}$에서의 Hessian. 
+    - Fisher information matrix: $ I_N (\hat{\theta}\mid\theta^*) \triangleq \mathop{var}_{\theta^*} [ \frac{d}{d\theta} \mathop{log} p(\mathcal{D}\mid\theta)\mid_{\hat{\theta}}] \overset{\hat{\theta}=MLE}{=} \mathbb{E} [ J(\hat{\theta}\mid\mathcal{D})]$
 - 이렇게 구한 sampling distribution을 활용해서 Maximum Likelihood Estimator(MLE)로 point estimation을 하거나 confidence interval을 구할 수 있다. 
 
 
@@ -144,7 +144,7 @@ tags:
 
 ## P.S.
 
-더 깊은 수준의 정리를 원하시면 [Jake VanderPlas 버전의 정리](http://jakevdp.github.io/blog/2014/03/11/frequentism-and-bayesianism-a-practical-intro/)가 읽어볼 만합니다. 5개의 글로 나누어져 있고, 꽤나 자세합니다. 그냥 이 블로그를 복붙하고 번역하는 게 더 낫지 않았나 하는 생각도... 뭐, 짧은 버전의 메리트도 있는 법이니깐...
+더 깊은 수준의 정리를 원하시면 [Jake VanderPlas 버전의 정리](http://jakevdp.github.io/blog/2014/03/11/frequentism-and-bayesianism-a-practical-intro/){:target="_blank"}가 읽어볼 만합니다. 5개의 글로 나누어져 있고, 꽤나 자세합니다. 그냥 이 블로그를 복붙하고 번역하는 게 더 낫지 않았나 하는 생각도... 뭐, 짧은 버전의 메리트도 있는 법이니깐...
 
 ------
 
