@@ -72,7 +72,7 @@ AFAIK, 빈도주의자 관점이든 베이지안 관점이든 사용하는 Proba
 - 빈도주의자 통계학의 추정을 언급하기 위해서는 우선 sampling distribution에 대해서 언급을 해야 한다. sampling distribution을 계산하기 위해 크게 두 가지 접근법이 있는데, Large sample theory로 analytic하게 접근하거나 bootstrap과 같은 Monte Carlo(MC) 테크닉을 사용하는 것이다. 	
   - 다음 함수들은 빈도주의자 관점과 Large sample theory에서 활용되는 함수들이며 알아둘 필요가 있다. 
     - score function: $ s(\hat{\theta}) \triangleq \nabla \mathop{log}p(\mathcal{D}\mid \theta)\mid _{\hat{\theta}}$, log-likelihood의 $\hat{\theta}$에서의 기울기. 
-    - observed information matrix: $ J(\hat{\theta}(\mathcal{D})) \triangleq -\nabla s(\hat{\theta}) =  - \nabla^2 \mathop{log}p(\mathcal{D}\mid \theta)\mid _{\hat{\theta}}​$, negative score function의 $\hat{\theta}​$에서의 기울기, 혹은 negative log-likelihood의  $\hat{\theta}​$에서의 Hessian. 
+    - observed information matrix: $ J(\hat{\theta}(\mathcal{D})) \triangleq -\nabla s(\hat{\theta}) =  - \nabla^2 \mathop{log}p(\mathcal{D}\mid \theta)\mid_{\hat{\theta}}$, negative score function의 $\hat{\theta}$에서의 기울기, 혹은 negative log-likelihood의  $\hat{\theta}$에서의 Hessian. 
     - Fisher information matrix: $ I_N (\hat{\theta}\mid \theta^{\ast}) \triangleq \mathop{var}_{\theta^{\ast}} \left[ \frac{d}{d\theta} \mathop{log} p(\mathcal{D}\mid \theta) \mid _{\hat{\theta}} \right] \overset{\hat{\theta}=MLE}{=} \mathbb{E} [ J(\hat{\theta}\mid \mathcal{D})] $
 
 - 이렇게 구한 sampling distribution을 활용해서 Maximum Likelihood Estimator(MLE)로 point estimation을 하거나 confidence interval을 구할 수 있다. 
@@ -96,7 +96,7 @@ AFAIK, 빈도주의자 관점이든 베이지안 관점이든 사용하는 Proba
 #### - 빈도주의자
 
 -  빈도주의자의 경우 risk function을 결정 이론에 활용한다. 
-  - risk function: $R(\theta^{\ast}, \delta ) \triangleq \mathbb{E}_{p(\tilde{\mathcal{D}}\mid \theta^{\ast})} \left[ L(\theta^{\ast} , \delta(\tilde{\mathcal{D}}))\right] = \int L(\theta^{\ast} , \delta(\tilde{\mathcal{D}}))p(\tilde{\mathcal{D}}\mid \theta^{\ast})d\tilde{\mathcal{D}}​$ 
+  - risk function: $R(\theta^{\ast}, \delta ) \triangleq \mathbb{E}_{p(\tilde{\mathcal{D}}\mid\theta^{\ast})} \left [ L(\theta^{\ast} , \delta(\tilde{\mathcal{D}})) \right] = \int L(\theta^{\ast}, \delta(\tilde{\mathcal{D}}))p(\tilde{\mathcal{D}}\mid \theta^{\ast})d\tilde{\mathcal{D}}​$ 
   - 일례로 $\theta^{\ast}$를 안다는 가정하에 L2 loss를 생각하면 위 식은 MSE가 되는 것을 알 수 있다. 
 -  문제는 이때 우리가  $\theta^{\ast}$ 을 알지 못한다는 것이다. 따라서 $R(\theta^{\ast}, \delta )$를 $R(\delta)$의 형태로 만들어야 한다. 이를 해결하는 방법으로 bayes risk, minimax risk 등이 있다. 
   - Bayes risk: $R_B(\delta) \triangleq \mathbb{E}[R(\theta^{\ast}, \delta)]=\displaystyle \int R(\theta^{\ast}, \delta)p(\theta^{\ast} )d\theta^{\ast}​$
