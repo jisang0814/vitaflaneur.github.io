@@ -28,7 +28,7 @@ tags:
 
 - [베이지안 관점](https://en.wikipedia.org/wiki/Bayesian_probability)에서는 불확실성을 야기하는 구조에 대한 주관적인 믿음(subjective belief)이 있고, 이를 데이터를 통해 수정하는 방식으로 inference가 이루어진다. 
 - 불확실성 하에서 일어나는 어떤 이벤트가 있을 때, 관찰자는 이 이벤트가 어떠한 구조의 불확실성을 가지고 있다는 주관적인 가설을 가지고 있는데, 이 가설을 얼마나 신뢰할 수 있느냐를 사전확률(prior)로 나타낸다. 해당 이벤트에 대한 데이터는 발생한 증거(evidence)로서, 관찰자는 가지고 있던 가설 하에서 이 데이터가 얼마나 발생가능했는지(likelihood)를 활용해 사전의 가설을 수정한 새로운 가설을 얻게 되고, 이 새로운 가설에 대한 신뢰도를 사후확률(posterior)로 표현한다. 
-- 사전 가설을 $\mathcal{H}$로, 데이터를 $\mathcal{D}$로 추상화하면 $P(\mathcal{H'}) = P(\mathcal{H}|\mathcal{D}) \propto P(\mathcal{D}|\mathcal{H}) \times P(\mathcal{H})$로 표현되는 구조를 활용한 통계적 추정을 하는 것이다. $P(\mathcal{H})$를 prior, $P(\mathcal{D}|\mathcal{H})$를 likelihood, $ P(\mathcal{H}|\mathcal{D})$를 posterior로 부른다. 
+- 사전 가설을 $\mathcal{H}$로, 데이터를 $\mathcal{D}$로 추상화하면 $P(\mathcal{H'}) = P(\mathcal{H}\|\mathcal{D}) \propto P(\mathcal{D}\|\mathcal{H}) \times P(\mathcal{H})$로 표현되는 구조를 활용한 통계적 추정을 하는 것이다. $P(\mathcal{H})$를 prior, $P(\mathcal{D}\|\mathcal{H})$를 likelihood, $ P(\mathcal{H}\|\mathcal{D})$를 posterior로 부른다. 
 - 즉, **불확실성을 발생시키는 구조에 대한 가설의 신뢰도를 확률로 정량화 하고 데이터를 통해 이 가설을 수정해 나가는 것**이 베이지안 관점의 방식이라 할 수 있다. 
 
 ------
@@ -71,9 +71,9 @@ tags:
 
 - 빈도주의자 통계학의 추정을 언급하기 위해서는 우선 sampling distribution에 대해서 언급을 해야 한다. sampling distribution을 계산하기 위해 크게 두 가지 접근법이 있는데, Large sample theory로 analytic하게 접근하거나 bootstrap과 같은 Monte Carlo(MC) 테크닉을 사용하는 것이다. 	
   - 다음 함수들은 빈도주의자 관점과 Large sample theory에서 활용되는 함수들이며 알아둘 필요가 있다. 
-    - score function: $s(\hat{\theta}) \triangleq \nabla \mathop{log}p(\mathcal{D}|\theta)|_{\hat{\theta}}$, log-likelihood의 $\hat{\theta}$에서의 기울기. 
-    - observed information matrix: $J(\hat{\theta}(\mathcal{D})) \triangleq -\nabla s(\hat{\theta}) =  - \nabla^2 \mathop{log}p(\mathcal{D}|\theta)|_{\hat{\theta}}$, negative score function의 $\hat{\theta}​$에서의 기울기, 혹은 negative log-likelihood의  $\hat{\theta}$에서의 Hessian. 
-    - Fisher information matrix: $I_N(\hat{\theta}|\theta^*) \triangleq \mathop{var}_{\theta^*} \left[ \frac{d}{d\theta} \mathop{log} p(\mathcal{D}|\theta)|_{\hat{\theta}}\right] \overset{\hat{\theta}=MLE}{=} \mathbb{E} \left[ J(\hat{\theta}|\mathcal{D}) \right]$
+    - score function: $s(\hat{\theta}) \triangleq \nabla \mathop{log}p(\mathcal{D}|\theta)\|_{\hat{\theta}}$, log-likelihood의 $\hat{\theta}$에서의 기울기. 
+    - observed information matrix: $J(\hat{\theta}(\mathcal{D})) \triangleq -\nabla s(\hat{\theta}) =  - \nabla^2 \mathop{log}p(\mathcal{D}\|\theta)|_{\hat{\theta}}$, negative score function의 $\hat{\theta}$에서의 기울기, 혹은 negative log-likelihood의  $\hat{\theta}$에서의 Hessian. 
+    - Fisher information matrix: $I_N(\hat{\theta}\|\theta^*) \triangleq \mathop{var}_{\theta^*} \left[ \frac{d}{d\theta} \mathop{log} p(\mathcal{D}\|\theta)|_{\hat{\theta}}\right] \overset{\hat{\theta}=MLE}{=} \mathbb{E} \left[ J(\hat{\theta}\|\mathcal{D}) \right]$
 - 이렇게 구한 sampling distribution을 활용해서 Maximum Likelihood Estimator(MLE)로 point estimation을 하거나 confidence interval을 구할 수 있다. 
 
 
@@ -95,7 +95,7 @@ tags:
 #### - 빈도주의자
 
 -  빈도주의자의 경우 risk function을 결정 이론에 활용한다. 
-  - risk function: $$R(\theta^*, \delta ) \triangleq \mathbb{E}_{p(\tilde{\mathcal{D}}|\theta^*)} \left[ L(\theta^* , \delta(\tilde{\mathcal{D}}))\right] = \int L(\theta^* , \delta(\tilde{\mathcal{D}}))p(\tilde{\mathcal{D}}|\theta^*)d\tilde{\mathcal{D}}$$ 
+  - risk function: $$R(\theta^*, \delta ) \triangleq \mathbb{E}_{p(\tilde{\mathcal{D}}\|\theta^*)} \left[ L(\theta^* , \delta(\tilde{\mathcal{D}}))\right] = \int L(\theta^* , \delta(\tilde{\mathcal{D}}))p(\tilde{\mathcal{D}}\|\theta^*)d\tilde{\mathcal{D}}$$ 
   - 일례로 $\theta^*$를 안다는 가정하에 L2 loss를 생각하면 위 식은 MSE가 되는 것을 알 수 있다. 
 - 문제는 이때 우리가  $\theta^*$ 을 알지 못한다는 것이다. 따라서 $R(\theta^*, \delta )$를 $R(\delta)$의 형태로 만들어야 한다. 이를 해결하는 방법으로 bayes risk, minimax risk 등이 있다. 
   - Bayes risk: $R_B(\delta) \triangleq \mathbb{E}[R(\theta^*, \delta)]=\displaystyle \int R(\theta^*, \delta)p(\theta^* )d\theta^*$
@@ -103,7 +103,7 @@ tags:
     Bayes risk는 위와 같이 모든 truth parameter에 대한 average risk로 정의된다. 이를 최소하여 얻는 Bayes estimator는 posterior expected loss를 최소화 함으로써도 구할 수 있다. 
   - Minimax risk: $R_{max}(\delta)\triangleq \underset{\theta^*}{max}R(\theta^*,\delta)$
     $\delta_{MM} \triangleq \underset{\delta}{\mathop{argmin}} R_{max}(\delta)$
-  - 어떤 estimator는 가능한 모든 $\theta​$에 대해 다른 estimator에 비해 큰 risk를 발생시킨다. 즉, dominate 당할 수 있다.  어느 estimator가 다른 estimator에게 dominate 되지 않을 떄, admissible하다고 한다. 그러나 admissibility 만으로는 estimator에 제약을 걸기는 충분하지 않다. Stein's paradox와 같은 경우를 통해 이를 확인할 수 있다. 
+  - 어떤 estimator는 가능한 모든 $\theta$에 대해 다른 estimator에 비해 큰 risk를 발생시킨다. 즉, dominate 당할 수 있다.  어느 estimator가 다른 estimator에게 dominate 되지 않을 떄, admissible하다고 한다. 그러나 admissibility 만으로는 estimator에 제약을 걸기는 충분하지 않다. Stein's paradox와 같은 경우를 통해 이를 확인할 수 있다. 
 - 빈도주의자 결정 이론이 최적의 estimator를 선택하는 자동적인 방법을 제공하지 않기 때문에, 휴리스틱들을 사용해서 이를 보충한다. 이들은 consistency, unbiasedness, efficiency 등이며, 이런 성질을 갖는 estimator가 좋은 것으로 간주된다. 다만, bias-variance tradeoff 등의 현상을 통해 위 휴리스틱들을 동시에 만족하는 estimator를 찾을 수는 없다는 것이 알려져 있다. 
 - 빈도주의자 결정 이론에서 risk의 계산은 실제 데이터 $\mathcal{D}$의 분포를 알아야 수행될 수 있다. 이를 알 수 없는 경우가 많기 때문에 $L(\theta, \delta(\mathcal{D}))$가 아닌 $L(y, \delta(x))$를 사용해 정의한다. 이때 $y$ 는 참이지만 알려지지 않은 반응값이고, $\delta(x)$는 입력 x에 대해 주어진 예측값이다. $p_*$ 가 unknown nature's distribution이라 가정하면 빈도주의자 관점의 리스크는 아래와 같이 표현되고, 이를 empirical distribution으로 대체하는 empirical risk를 정의할 수 있다. 
   Frequentist risk: $$R(p_*, \delta ) \triangleq \mathbb{E}_{(\bold{x},y) \sim p_*} \left[ L(y, \delta(\bold{x}))\right] = \underset{\bold{x}}{\sum}\underset{\bold{y}}{\sum}L(y, \delta(\bold{x})) p_*(\bold{x},y)$$ 
