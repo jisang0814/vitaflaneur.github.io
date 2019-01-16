@@ -28,7 +28,7 @@ AFAIK, 빈도주의자 관점이든 베이지안 관점이든 사용하는 Proba
 
 - [베이지안 관점](https://en.wikipedia.org/wiki/Bayesian_probability){:target="_blank"}에서는 불확실성을 야기하는 구조에 대한 주관적인 믿음(subjective belief)이 있고, 이를 데이터를 통해 수정하는 방식으로 inference가 이루어진다. 
 - 불확실성 하에서 일어나는 어떤 이벤트가 있을 때, 관찰자는 이 이벤트가 어떠한 구조의 불확실성을 가지고 있다는 주관적인 가설을 가지고 있는데, 이 가설을 얼마나 신뢰할 수 있느냐를 사전확률(prior)로 나타낸다. 해당 이벤트에 대한 데이터는 발생한 증거(evidence)로서, 관찰자는 가지고 있던 가설 하에서 이 데이터가 얼마나 발생가능했는지(likelihood)를 활용해 사전의 가설을 수정한 새로운 가설을 얻게 되고, 이 새로운 가설에 대한 신뢰도를 사후확률(posterior)로 표현한다. 
-- 사전 가설을 $\mathcal{H}$로, 데이터를 $\mathcal{D}$로 추상화하면 $P(\mathcal{H'}) = P(\mathcal{H}\vert \mathcal{D}) \propto P(\mathcal{D}\vert \mathcal{H}) \times P(\mathcal{H})$로 표현되는 구조를 활용한 통계적 추정을 하는 것이다. $P(\mathcal{H})$를 prior, $P(\mathcal{D}\vert \mathcal{H})$를 likelihood, $ P(\mathcal{H}\vert \mathcal{D})$를 posterior로 부른다. 
+- 사전 가설을 $\mathcal{H}​$로, 데이터를 $\mathcal{D}​$로 추상화하면 $P(\mathcal{H'}) = P(\mathcal{H}\vert \mathcal{D}) \propto P(\mathcal{D}\vert \mathcal{H}) \times P(\mathcal{H})​$로 표현되는 구조를 활용한 통계적 추정을 하는 것이다. $P(\mathcal{H})​$를 prior, $P(\mathcal{D}\vert \mathcal{H})​$를 likelihood, $ P(\mathcal{H}\vert \mathcal{D})​$를 posterior로 부른다. 
 - 즉, **불확실성을 발생시키는 구조에 대한 가설의 신뢰도를 확률로 정량화 하고 데이터를 통해 이 가설을 수정해 나가는 것**이 베이지안 관점의 방식이라 할 수 있다. 
 
 ------
@@ -102,8 +102,8 @@ AFAIK, 빈도주의자 관점이든 베이지안 관점이든 사용하는 Proba
   - Bayes risk: $R_B(\delta) \triangleq \mathbb{E}[R(\theta^{\ast}, \delta)]=\displaystyle \int R(\theta^{\ast}, \delta)p(\theta^{\ast} )d\theta^{\ast}$
     $\delta_B \triangleq \underset{\delta}{\mathop{argmin}} R_B(\delta)$  
     Bayes risk는 위와 같이 모든 truth parameter에 대한 average risk로 정의된다. 이를 최소하여 얻는 Bayes estimator는 posterior expected loss를 최소화 함으로써도 구할 수 있다. 
-  - Minimax risk: $R_{max}(\delta)\triangleq \underset{\theta^{\ast}}{max}R(\theta^{\ast},\delta)$  
-    $\delta_{MM} \triangleq \underset{\delta}{\mathop{argmin}} R_{max}(\delta)$
+  - Minimax risk: $R_{max}(\delta)\triangleq \underset{\theta^{\ast}}{max}R(\theta^{\ast},\delta)​$  
+    $\delta_{MM} \triangleq \underset{\delta}{\mathop{argmin}} R_{max}(\delta)​$
 - 어떤 estimator는 가능한 모든 $\theta$에 대해 다른 estimator에 비해 큰 risk를 발생시킨다. 즉, dominate 당할 수 있다.  어느 estimator가 다른 estimator에게 dominate 되지 않을 떄, admissible하다고 한다. 그러나 admissibility 만으로는 estimator에 제약을 걸기는 충분하지 않다. Stein's paradox와 같은 경우를 통해 이를 확인할 수 있다. 
 -  빈도주의자 결정 이론이 최적의 estimator를 선택하는 자동적인 방법을 제공하지 않기 때문에, 휴리스틱들을 사용해서 이를 보충한다. 이들은 consistency, unbiasedness, efficiency 등이며, 이런 성질을 갖는 estimator가 좋은 것으로 간주된다. 다만, bias-variance tradeoff 등의 현상을 통해 위 휴리스틱들을 동시에 만족하는 estimator를 찾을 수는 없다는 것이 알려져 있다. 
 -  빈도주의자 결정 이론에서 risk의 계산은 실제 데이터 $\mathcal{D}$의 분포를 알아야 수행될 수 있다. 이를 알 수 없는 경우가 많기 때문에 $L(\theta, \delta(\mathcal{D}))$가 아닌 $L(y, \delta(x))$를 사용해 정의한다. 이때 $y$ 는 참이지만 알려지지 않은 반응값이고, $\delta(x)$는 입력 x에 대해 주어진 예측값이다. $p_{\ast}$ 가 unknown nature's distribution이라 가정하면 빈도주의자 관점의 리스크는 아래와 같이 표현되고, 이를 empirical distribution으로 대체하는 empirical risk를 정의할 수 있다. 
@@ -135,14 +135,14 @@ $$BIC \triangleq \mathop{log}p(\mathcal{D}\vert \hat{\theta}_{MLE}) - \frac{dof(
   $$\displaystyle p(\theta\vert \mathcal{D}) = \frac{p(\mathcal{D}\vert \theta)p(\theta)}{p(\mathcal{D})}= \frac{p(\mathcal{D}\vert \theta)}{p(\mathcal{D})}\int{p(\theta\vert \eta)p(\eta)d\eta} $$  
   로 표현되는 HBM의 형식에서 적분이 어렵기 때문에,   
   
-  $$\displaystyle p(\theta\vert \mathcal{D}) = \int {p(\theta\vert  \eta,\mathcal{D})p(\eta\vert \mathcal{D})d\eta} = \int{\frac{p(\mathcal{D}\vert \theta)p(\theta\vert \eta)}{p(\mathcal{D}\vert \eta)}p(\eta\vert \mathcal{D})d\eta} $$   
-  $$\displaystyle p(\eta\vert \mathcal{D})=\int{p(\eta\vert \theta)p(\theta\vert \mathcal{D})d\theta}$$  
+  $$\displaystyle p(\theta\vert \mathcal{D}) = \int {p(\theta\vert  \eta,\mathcal{D})p(\eta\vert \mathcal{D})d\eta} = \int{\frac{p(\mathcal{D}\vert \theta)p(\theta\vert \eta)}{p(\mathcal{D}\vert \eta)}p(\eta\vert \mathcal{D})d\eta} ​$$   
+  $$\displaystyle p(\eta\vert \mathcal{D})=\int{p(\eta\vert \theta)p(\theta\vert \mathcal{D})d\theta}​$$  
 
-  와 같이 표현하고,  $\eta^{\ast} = \mathop{argmax}  p(\eta\vert \mathcal{D})$를 추정하여,   
-  $$p(\theta\vert \mathcal{D})\simeq \frac{p(\mathcal{D}\vert \theta)p(\theta\vert \eta^{\ast})}{p(\mathcal{D}\vert \eta^{\ast})} $$  
+  와 같이 표현하고,  $\eta^{\ast} = \mathop{argmax}  p(\eta\vert \mathcal{D})​$를 추정하여,   
+  $$p(\theta\vert \mathcal{D})\simeq \frac{p(\mathcal{D}\vert \theta)p(\theta\vert \eta^{\ast})}{p(\mathcal{D}\vert \eta^{\ast})} ​$$  
   로 나타내면 EM algorithm으로 사후확률이 추정가능하다. 이 과정을 EBM이라 부른다. 
 
-- $\eta^{\ast}$의 추정에서 균등사전확률을 가정하면, $\eta^{\ast} = \mathop{argmax}  p(\eta\vert \mathcal{D}) =  \mathop{argmax}  p(\mathcal{D}\vert \eta) $ 가 된다. 따라서 EBM을 type II maximum likelihood라고 부르며, ML에서는 evidence procedure라고 부르기도 한다. 또한, EBM은 prior가 data에 독립적이어야 한다는 원칙을 위배함으로써 계산적인 효용을 얻는 방식이다. 
+- $\eta^{\ast}​$의 추정에서 균등사전확률을 가정하면, $\eta^{\ast} = \mathop{argmax}  p(\eta\vert \mathcal{D}) =  \mathop{argmax}  p(\mathcal{D}\vert \eta) ​$ 가 된다. 따라서 EBM을 type II maximum likelihood라고 부르며, ML에서는 evidence procedure라고 부르기도 한다. 또한, EBM은 prior가 data에 독립적이어야 한다는 원칙을 위배함으로써 계산적인 효용을 얻는 방식이다. 
 
 
 
