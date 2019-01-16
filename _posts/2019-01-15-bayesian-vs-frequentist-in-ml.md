@@ -112,9 +112,9 @@ AFAIK, 빈도주의자 관점이든 베이지안 관점이든 사용하는 Proba
   - Empirical risk minimization (ERM): $$\delta_{ERM}(\mathcal{D}) = \mathop{argmin}_{\delta} R_{emp}(\mathcal{D},\delta)$  
   - Nature's distribution과 empirical distribution이 같을 경우 empirical risk는 bayes risk와 동일하다.   
 - ERM은 드러난 데이터 만으로 분포를 가정해 추정을 하는 방식이기 때문에 overfitting의 위험이 있고 이를 피하기 위해 regularization 을 해야한다.  
-  - Regularized risk minimization (RRM): $\delta_{\lambda}=\mathop{argmin}_{\delta}[R_{emp}(\mathcal{D},\delta) + \lambda C(\delta)]$  
+  - Regularized risk minimization (RRM): $$\delta_{\lambda}=\mathop{argmin}_{\delta}[R_{emp}(\mathcal{D},\delta) + \lambda C(\delta)]$$
 - 그러나 regularization strength인 $\lambda$를 정하는 문제를 해결해야 한다. 이를 해결하는 방식을 structural risk minimization이라고 부르고, 흔히 Cross validation(CV)와 theoretical upper bounds를 활용한다.  
-  - Theoretical upper bound: $ p\left(\underset{h \in \mathcal{H}}{\mathop{max}} \lvert R_{emp}(\mathcal{D},h) -R(p_{\ast} , h) \rvert>\epsilon \right) \leq 2dim(\mathcal{H})e^{-2N\epsilon^2}$  
+  - Theoretical upper bound: $$ p\left(\underset{h \in \mathcal{H}}{\mathop{max}} \lvert R_{emp}(\mathcal{D},h) -R(p_{\ast} , h) \rvert>\epsilon \right) \leq 2dim(\mathcal{H})e^{-2N\epsilon^2}$$
 - ERM과 RRM이 구하기 어려울 경우에는 surrogate loss function을 사용한다. log loss나 hinge loss가 그 예이다. 
 
 
