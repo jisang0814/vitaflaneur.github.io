@@ -17,15 +17,18 @@ tags:
 ### 빈도주의자 관점은?
 
 - [빈도주의자 관점](https://en.wikipedia.org/wiki/Frequentist_probability)에서는 불확실성을 야기하는 ground truth가 있다는 가정 하에서 inference가 이루어진다.
+
 - 불확실성(Uncertainty) 하에서 일어나는 어떤 이벤트가 있을 때, 빈도주의자 관점에서는 이 이벤트에 대한 데이터를 확률시행(random experiment)의 결과로 보고, 이를 반복하여 관찰해 나온 상대적 빈도(relative frequency)를 해당 이벤트의 불확실성에 대한 척도(measure), 즉 확률(probability)로 본다. 즉, 이 관점 하에서는 확률은 해당 이벤트의 발생가능도(likelihood, propensity, ...)를 표현하는 데 활용된다. 
+
 - ground truth를 모수 $\mathcal{T}$로, 데이터를 $\mathcal{D}$로 추상화하면 $P(\mathcal{D}|\mathcal{T})$로 표현되는 구조를 활용한 통계적 추정을 하는 것이다. 추정 자체에서는 오차를 고려하기 위해 $\mathcal{D}$에 대한 분포를 나타내는 $P(\mathcal{D})$를 활용하기도 하지만, $\mathcal{T}$는 고정되어 있어 $P(\mathcal{T})$를 고려하진 않는다. 
+
 - 즉, **상대적 빈도를 통해 발생가능도를 추정함으로써 불확실성을 발생시키는 고정된 구조를 해석하는 것**이 빈도주의자 관점의 방식이라 할 수 있을 것이다. 
 
 ### 그렇다면 베이지안 관점은?
 
 - [베이지안 관점](https://en.wikipedia.org/wiki/Bayesian_probability)에서는 불확실성을 야기하는 구조에 대한 주관적인 믿음(subjective belief)이 있고, 이를 데이터를 통해 수정하는 방식으로 inference가 이루어진다. 
 - 불확실성 하에서 일어나는 어떤 이벤트가 있을 때, 관찰자는 이 이벤트가 어떠한 구조의 불확실성을 가지고 있다는 주관적인 가설을 가지고 있는데, 이 가설을 얼마나 신뢰할 수 있느냐를 사전확률(prior)로 나타낸다. 해당 이벤트에 대한 데이터는 발생한 증거(evidence)로서, 관찰자는 가지고 있던 가설 하에서 이 데이터가 얼마나 발생가능했는지(likelihood)를 활용해 사전의 가설을 수정한 새로운 가설을 얻게 되고, 이 새로운 가설에 대한 신뢰도를 사후확률(posterior)로 표현한다. 
-- 사전 가설을 $\mathcal{H}$로, 데이터를 $\mathcal{D}$로 추상화하면 $P(\mathcal{H'}) = P(\mathcal{H}|\mathcal{D}) \propto P(\mathcal{D}|\mathcal{H})  \times P(\mathcal{H})$로 표현되는 구조를 활용한 통계적 추정을 하는 것이다. $P(\mathcal{H})$를 prior, $P(\mathcal{D}|\mathcal{H})$를 likelihood, $ P(\mathcal{H}|\mathcal{D})$를 posterior로 부른다. 
+- 사전 가설을 $\mathcal{H}$로, 데이터를 $\mathcal{D}$로 추상화하면 $P(\mathcal{H'}) = P(\mathcal{H}|\mathcal{D}) \propto P(\mathcal{D}|\mathcal{H}) \times P(\mathcal{H})$로 표현되는 구조를 활용한 통계적 추정을 하는 것이다. $P(\mathcal{H})$를 prior, $P(\mathcal{D}|\mathcal{H})$를 likelihood, $ P(\mathcal{H}|\mathcal{D})$를 posterior로 부른다. 
 - 즉, **불확실성을 발생시키는 구조에 대한 가설의 신뢰도를 확률로 정량화 하고 데이터를 통해 이 가설을 수정해 나가는 것**이 베이지안 관점의 방식이라 할 수 있다. 
 
 ------
