@@ -12,7 +12,7 @@ tags:
 
 ##  Basics
 
-- AFAIK, 빈도주의자 관점이든 베이지안 관점이든 사용하는 Probability measure 자체가 다르진 않다. 다만 데이터를 통해 통계적 추정(inference)를 수행하는 과정에서 접근하는 방식이 다르며, 이 때문에 결과적으로 practical difference가 발생한다. 
+AFAIK, 빈도주의자 관점이든 베이지안 관점이든 사용하는 Probability measure 자체가 다르진 않다. 다만 데이터를 통해 통계적 추정(inference)를 수행하는 과정에서 접근하는 방식이 다르며, 이 때문에 결과적으로 practical difference가 발생한다. 
 
 ### 빈도주의자 관점은?
 
@@ -73,7 +73,9 @@ tags:
   - 다음 함수들은 빈도주의자 관점과 Large sample theory에서 활용되는 함수들이며 알아둘 필요가 있다. 
     - score function: $ s(\hat{\theta}) \triangleq \nabla \mathop{log}p(\mathcal{D}\mid\theta)\mid_{\hat{\theta}}$, log-likelihood의 $\hat{\theta}$에서의 기울기. 
     - observed information matrix: $ J(\hat{\theta}(\mathcal{D})) \triangleq -\nabla s(\hat{\theta}) =  - \nabla^2 \mathop{log}p(\mathcal{D}\mid\theta)\mid_{\hat{\theta}}$, negative score function의 $\hat{\theta}$에서의 기울기, 혹은 negative log-likelihood의  $\hat{\theta}$에서의 Hessian. 
-    - Fisher information matrix: $ I_N (\hat{\theta}\mid\theta^*) \triangleq \mathop{var}_{\theta^*} [ \frac{d}{d\theta} \mathop{log} p(\mathcal{D}\mid\theta)\mid_{\hat{\theta}}] \overset{\hat{\theta}=MLE}{=} \mathbb{E} [ J(\hat{\theta}\mid\mathcal{D})]$
+
+Fisher information matrix: $ I_N (\hat{\theta}\mid\theta^*) \triangleq \mathop{var}_{\theta^*} \left[ \frac{d}{d\theta} \mathop{log} p(\mathcal{D}\mid\theta)\mid_{\hat{\theta}} \right] \overset{\hat{\theta}=MLE}{=} \mathbb{E} [ J(\hat{\theta}\mid\mathcal{D})]$
+
 - 이렇게 구한 sampling distribution을 활용해서 Maximum Likelihood Estimator(MLE)로 point estimation을 하거나 confidence interval을 구할 수 있다. 
 
 
