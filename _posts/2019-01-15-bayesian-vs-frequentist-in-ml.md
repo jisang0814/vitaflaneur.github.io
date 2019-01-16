@@ -71,9 +71,9 @@ tags:
 
 - 빈도주의자 통계학의 추정을 언급하기 위해서는 우선 sampling distribution에 대해서 언급을 해야 한다. sampling distribution을 계산하기 위해 크게 두 가지 접근법이 있는데, Large sample theory로 analytic하게 접근하거나 bootstrap과 같은 Monte Carlo(MC) 테크닉을 사용하는 것이다. 	
   - 다음 함수들은 빈도주의자 관점과 Large sample theory에서 활용되는 함수들이며 알아둘 필요가 있다. 
-    - score function: $s(\hat{\theta}) \triangleq \nabla \mathop{log}p(\mathcal{D}|\theta)\|_{\hat{\theta}}$, log-likelihood의 $\hat{\theta}$에서의 기울기. 
-    - observed information matrix: $J(\hat{\theta}(\mathcal{D})) \triangleq -\nabla s(\hat{\theta}) =  - \nabla^2 \mathop{log}p(\mathcal{D}\|\theta)|_{\hat{\theta}}$, negative score function의 $\hat{\theta}$에서의 기울기, 혹은 negative log-likelihood의  $\hat{\theta}$에서의 Hessian. 
-    - Fisher information matrix: $I_N(\hat{\theta}\|\theta^*) \triangleq \mathop{var}_{\theta^*} \left[ \frac{d}{d\theta} \mathop{log} p(\mathcal{D}\|\theta)|_{\hat{\theta}}\right] \overset{\hat{\theta}=MLE}{=} \mathbb{E} \left[ J(\hat{\theta}\|\mathcal{D}) \right]$
+  - score function: $ s(\hat{\theta}) \triangleq \nabla \mathop{log}p(\mathcal{D}|\theta)\|_{\hat{\theta}} $, log-likelihood의 $\hat{\theta}$에서의 기울기. 
+  - observed information matrix: $J(\hat{\theta}(\mathcal{D})) \triangleq -\nabla s(\hat{\theta}) =  - \nabla^2 \mathop{log}p(\mathcal{D}\|\theta)|_{\hat{\theta}}$, negative score function의 $\hat{\theta}$에서의 기울기, 혹은 negative log-likelihood의  $\hat{\theta}$에서의 Hessian. 
+  - Fisher information matrix: $I_N(\hat{\theta}\|\theta^*) \triangleq \mathop{var}_{\theta^*} \left[ \frac{d}{d\theta} \mathop{log} p(\mathcal{D}\|\theta)|_{\hat{\theta}}\right] \overset{\hat{\theta}=MLE}{=} \mathbb{E} \left[ J(\hat{\theta}\|\mathcal{D}) \right]$
 - 이렇게 구한 sampling distribution을 활용해서 Maximum Likelihood Estimator(MLE)로 point estimation을 하거나 confidence interval을 구할 수 있다. 
 
 
@@ -138,7 +138,7 @@ tags:
   와 같이 표현하고,  $\eta^* = \mathop{argmax}  p(\eta|\mathcal{D})​$를 추정하여, 
   $$\displaystyle p(\theta|\mathcal{D})\simeq \frac{p(\mathcal{D}|\theta)p(\theta|\eta^*)}{p(\mathcal{D}|\eta^*)} ​$$
   로 나타내면 EM algorithm으로 사후확률이 추정가능하다. 이 과정을 EBM이라 부른다. 
-  $\eta^*​$의 추정에서 균등사전확률을 가정하면, $\eta^* = \mathop{argmax}  p(\eta|\mathcal{D}) =  \mathop{argmax}  p(\mathcal{D}|\eta) ​$ 가 된다. 따라서 EBM을 type II maximum likelihood라고 부르며, ML에서는 evidence procedure라고 부르기도 한다. 또한, EBM은 prior가 data에 독립적이어야 한다는 원칙을 위배함으로써 계산적인 효용을 얻는 방식이다. 
+  $\eta^*$의 추정에서 균등사전확률을 가정하면, $\eta^* = \mathop{argmax}  p(\eta|\mathcal{D}) =  \mathop{argmax}  p(\mathcal{D}|\eta) $ 가 된다. 따라서 EBM을 type II maximum likelihood라고 부르며, ML에서는 evidence procedure라고 부르기도 한다. 또한, EBM은 prior가 data에 독립적이어야 한다는 원칙을 위배함으로써 계산적인 효용을 얻는 방식이다. 
 
 
 
