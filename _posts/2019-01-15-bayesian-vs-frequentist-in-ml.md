@@ -99,17 +99,17 @@ AFAIK, 빈도주의자 관점이든 베이지안 관점이든 사용하는 Proba
   - risk function: $$R(\theta^{\ast}, \delta ) \triangleq \mathbb{E}_{p(\tilde{\mathcal{D}}\mid\theta^{\ast})} \left[ L(\theta^{\ast} , \delta(\tilde{\mathcal{D}}))\right] = \int L(\theta^{\ast} , \delta(\tilde{\mathcal{D}}))p(\tilde{\mathcal{D}}\mid\theta^{\ast})d\tilde{\mathcal{D}}$$ 
   - 일례로 $\theta^{\ast}$를 안다는 가정하에 L2 loss를 생각하면 위 식은 MSE가 되는 것을 알 수 있다. 
 -  문제는 이때 우리가  $\theta^{\ast}$ 을 알지 못한다는 것이다. 따라서 $R(\theta^{\ast}, \delta )$를 $R(\delta)$의 형태로 만들어야 한다. 이를 해결하는 방법으로 bayes risk, minimax risk 등이 있다. 
-  - Bayes risk: $R_B(\delta) \triangleq \mathbb{E}[R(\theta^{\ast}, \delta)]=\displaystyle \int R(\theta^{\ast}, \delta)p(\theta^{\ast} )d\theta^{\ast}$
+  - Bayes risk: $R_B(\delta) \triangleq \mathbb{E}[R(\theta^{\ast}, \delta)]=\displaystyle \int R(\theta^{\ast}, \delta)p(\theta^{\ast} )d\theta^{\ast}​$
     $\delta_B \triangleq \underset{\delta}{\mathop{argmin}} R_B(\delta)​$
     Bayes risk는 위와 같이 모든 truth parameter에 대한 average risk로 정의된다. 이를 최소하여 얻는 Bayes estimator는 posterior expected loss를 최소화 함으로써도 구할 수 있다. 
-  - Minimax risk: $R_{max}(\delta)\triangleq \underset{\theta^{\ast}}{max}R(\theta^{\ast},\delta)$
+  - Minimax risk: $R_{max}(\delta)\triangleq \underset{\theta^{\ast}}{max}R(\theta^{\ast},\delta)​$
     $\delta_{MM} \triangleq \underset{\delta}{\mathop{argmin}} R_{max}(\delta)​$
   - 어떤 estimator는 가능한 모든 $\theta​$에 대해 다른 estimator에 비해 큰 risk를 발생시킨다. 즉, dominate 당할 수 있다.  어느 estimator가 다른 estimator에게 dominate 되지 않을 떄, admissible하다고 한다. 그러나 admissibility 만으로는 estimator에 제약을 걸기는 충분하지 않다. Stein's paradox와 같은 경우를 통해 이를 확인할 수 있다. 
 -  빈도주의자 결정 이론이 최적의 estimator를 선택하는 자동적인 방법을 제공하지 않기 때문에, 휴리스틱들을 사용해서 이를 보충한다. 이들은 consistency, unbiasedness, efficiency 등이며, 이런 성질을 갖는 estimator가 좋은 것으로 간주된다. 다만, bias-variance tradeoff 등의 현상을 통해 위 휴리스틱들을 동시에 만족하는 estimator를 찾을 수는 없다는 것이 알려져 있다. 
 -  빈도주의자 결정 이론에서 risk의 계산은 실제 데이터 $\mathcal{D}$의 분포를 알아야 수행될 수 있다. 이를 알 수 없는 경우가 많기 때문에 $L(\theta, \delta(\mathcal{D}))$가 아닌 $L(y, \delta(x))$를 사용해 정의한다. 이때 $y$ 는 참이지만 알려지지 않은 반응값이고, $\delta(x)$는 입력 x에 대해 주어진 예측값이다. $p_{\ast}$ 가 unknown nature's distribution이라 가정하면 빈도주의자 관점의 리스크는 아래와 같이 표현되고, 이를 empirical distribution으로 대체하는 empirical risk를 정의할 수 있다. 
-  Frequentist risk: $$R(p_{\ast}, \delta ) \triangleq \mathbb{E}_{(\bold{x},y) \sim p_{\ast}} \left[ L(y, \delta(\bold{x}))\right] = \underset{\bold{x}}{\sum}\underset{\bold{y}}{\sum}L(y, \delta(\bold{x})) p_{\ast}(\bold{x},y)$$ 
-  Empirical risk: $$R_{emp}(\mathcal{D}) \triangleq R(p_{amp}, \delta ) = \frac{1}{N} \sum_{i=1}^{N}L(y_i, \delta(\bold{x}_i)) $$ 
-  Empirical risk minimization (ERM): $\delta_{ERM}(\mathcal{D})=\mathop{argmin}_{\delta}R_{emp}(\mathcal{D},\delta)$
+  Frequentist risk: $$R(p_{\ast}, \delta ) \triangleq \mathbb{E}_{(\mathbf{x},y) \sim p_{\ast}} \left[ L(y, \delta(\mathbf{x}))\right] = \underset{\mathbf{x}}{\sum}\underset{\mathbf{y}}{\sum}L(y, \delta(\mathbf{x})) p_{\ast}(\mathbf{x},y)$$ 
+  Empirical risk: $$R_{emp}(\mathcal{D}) \triangleq R(p_{amp}, \delta ) = \frac{1}{N} \sum_{i=1}^{N}L(y_i, \delta(\mathbf{x}_i)) $$ 
+  Empirical risk minimization (ERM): $\delta_{ERM}(\mathcal{D})=\mathop{argmin}_{\delta}R_{emp}(\mathcal{D},\delta)​$
   - Nautre's distribution과 empirical distribution이 같을 경우 empirical risk는 bayes risk와 동일하다. 
 -  ERM은 드러난 데이터 만으로 분포를 가정해 추정을 하는 방식이기 때문에 overfitting의 위험이 있고 이를 피하기 위해 regularization 을 해야한다. 
   Regularized risk minimization (RRM): $\delta_{\lambda}=\mathop{argmin}_{\delta}[R_{emp}(\mathcal{D},\delta)+\lambda C(\delta)]​$
@@ -134,12 +134,12 @@ AFAIK, 빈도주의자 관점이든 베이지안 관점이든 사용하는 Proba
   $$\displaystyle p(\theta\mid\mathcal{D}) = \frac{p(\mathcal{D}\mid\theta)p(\theta)}{p(\mathcal{D})}= \frac{p(\mathcal{D}\mid\theta)}{p(\mathcal{D})}\int{p(\theta\mid\eta)p(\eta)d\eta} $$
 
   로 표현되는 HBM의 형식에서 적분이 어렵기 때문에, 
-  $$\displaystyle p(\theta\mid\mathcal{D}) = \int {p(\theta\mid \eta,\mathcal{D})p(\eta\mid\mathcal{D})d\eta} = \int{\frac{p(\mathcal{D}\mid\theta)p(\theta\mid\eta)}{p(\mathcal{D}\mid\eta)}p(\eta\mid\mathcal{D})d\eta} $$ 
-  $$\displaystyle p(\eta\mid\mathcal{D})=\int{p(\eta\mid\theta)p(\theta\mid\mathcal{D})d\theta}$$
+  $$\displaystyle p(\theta\mid\mathcal{D}) = \int {p(\theta\mid \eta,\mathcal{D})p(\eta\mid\mathcal{D})d\eta} = \int{\frac{p(\mathcal{D}\mid\theta)p(\theta\mid\eta)}{p(\mathcal{D}\mid\eta)}p(\eta\mid\mathcal{D})d\eta} ​$$ 
+  $$\displaystyle p(\eta\mid\mathcal{D})=\int{p(\eta\mid\theta)p(\theta\mid\mathcal{D})d\theta}​$$
   와 같이 표현하고,  $\eta^{\ast} = \mathop{argmax}  p(\eta\mid\mathcal{D})​$를 추정하여, 
   $$\displaystyle p(\theta\mid\mathcal{D})\simeq \frac{p(\mathcal{D}\mid\theta)p(\theta\mid\eta^{\ast})}{p(\mathcal{D}\mid\eta^{\ast})} ​$$
   로 나타내면 EM algorithm으로 사후확률이 추정가능하다. 이 과정을 EBM이라 부른다. 
-  $\eta^{\ast}$의 추정에서 균등사전확률을 가정하면, $\eta^{\ast} = \mathop{argmax}  p(\eta\mid\mathcal{D}) =  \mathop{argmax}  p(\mathcal{D}\mid\eta) $ 가 된다. 따라서 EBM을 type II maximum likelihood라고 부르며, ML에서는 evidence procedure라고 부르기도 한다. 또한, EBM은 prior가 data에 독립적이어야 한다는 원칙을 위배함으로써 계산적인 효용을 얻는 방식이다. 
+  $\eta^{\ast}​$의 추정에서 균등사전확률을 가정하면, $\eta^{\ast} = \mathop{argmax}  p(\eta\mid\mathcal{D}) =  \mathop{argmax}  p(\mathcal{D}\mid\eta) ​$ 가 된다. 따라서 EBM을 type II maximum likelihood라고 부르며, ML에서는 evidence procedure라고 부르기도 한다. 또한, EBM은 prior가 data에 독립적이어야 한다는 원칙을 위배함으로써 계산적인 효용을 얻는 방식이다. 
 
 
 
