@@ -96,7 +96,7 @@ AFAIK, 빈도주의자 관점이든 베이지안 관점이든 사용하는 Proba
 #### - 빈도주의자
 
 - 빈도주의자의 경우 risk function을 결정 이론에 활용한다. 
-  - risk function: $R(\theta^{\ast}, \delta ) \triangleq \mathbb{E}_{p(\tilde{\mathcal{D}}\vert\theta^{\ast})} \left [ L(\theta^{\ast} , \delta(\tilde{\mathcal{D}})) \right] = \int L(\theta^{\ast}, \delta(\tilde{\mathcal{D}}))p(\tilde{\mathcal{D}}\vert \theta^{\ast})d\tilde{\mathcal{D}}$ 
+  - risk function: $ \displaystyle R(\theta^{\ast}, \delta ) \triangleq \mathbb{E}_{p(\tilde{\mathcal{D}}\vert\theta^{\ast})} \left [ L(\theta^{\ast} , \delta(\tilde{\mathcal{D}})) \right] = \int L(\theta^{\ast}, \delta(\tilde{\mathcal{D}}))p(\tilde{\mathcal{D}}\vert \theta^{\ast})d\tilde{\mathcal{D}}$ 
   - 일례로 $\theta^{\ast}$를 안다는 가정하에 L2 loss를 생각하면 위 식은 MSE가 되는 것을 알 수 있다. 
 - 문제는 이때 우리가  $\theta^{\ast}$ 을 알지 못한다는 것이다. 따라서 $R(\theta^{\ast}, \delta )$를 $R(\delta)$의 형태로 만들어야 한다. 이를 해결하는 방법으로 bayes risk, minimax risk 등이 있다. 
   - Bayes risk: $R_B(\delta) \triangleq \mathbb{E}[R(\theta^{\ast}, \delta)]=\displaystyle \int R(\theta^{\ast}, \delta)p(\theta^{\ast} )d\theta^{\ast}$
@@ -132,10 +132,10 @@ $$BIC \triangleq \mathop{log}p(\mathcal{D}\vert \hat{\theta}_{MLE}) - \frac{dof(
 
 - 모수적 모델을 가정하고 parameter를 $\theta$, hyperparameter를 $\eta$로 표현할 때, 
 
-  $$p(\theta\vert \mathcal{D}) = \frac{p(\mathcal{D}\vert \theta)p(\theta)}{p(\mathcal{D})}= \frac{p(\mathcal{D}\vert \theta)}{p(\mathcal{D})}\int{p(\theta\vert \eta)p(\eta)d\eta} $$  
+  $$\displaystyle p(\theta\vert \mathcal{D}) = \frac{p(\mathcal{D}\vert \theta)p(\theta)}{p(\mathcal{D})}= \frac{p(\mathcal{D}\vert \theta)}{p(\mathcal{D})}\int{p(\theta\vert \eta)p(\eta)d\eta} $$  
   로 표현되는 HBM의 형식에서 적분이 어렵기 때문에,   
   
-  $$p(\theta\vert \mathcal{D}) = \int {p(\theta\vert  \eta,\mathcal{D})p(\eta\vert \mathcal{D})d\eta} = \int{\frac{p(\mathcal{D}\vert \theta)p(\theta\vert \eta)}{p(\mathcal{D}\vert \eta)}p(\eta\vert \mathcal{D})d\eta} $$   
+  $$\displaystyle p(\theta\vert \mathcal{D}) = \int {p(\theta\vert  \eta,\mathcal{D})p(\eta\vert \mathcal{D})d\eta} = \int{\frac{p(\mathcal{D}\vert \theta)p(\theta\vert \eta)}{p(\mathcal{D}\vert \eta)}p(\eta\vert \mathcal{D})d\eta} $$   
   $$\displaystyle p(\eta\vert \mathcal{D})=\int{p(\eta\vert \theta)p(\theta\vert \mathcal{D})d\theta}$$  
 
   와 같이 표현하고,  $\eta^{\ast} = \mathop{argmax}  p(\eta\vert \mathcal{D})$를 추정하여,   
