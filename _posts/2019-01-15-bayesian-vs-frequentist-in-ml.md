@@ -12,8 +12,6 @@ tags:
 
 ##  Basics
 
-AFAIK, 빈도주의자 관점이든 베이지안 관점이든 사용하는 Probability measure 자체가 다르진 않다. 다만 데이터를 통해 통계적 추정(inference)를 수행하는 과정에서 접근하는 방식이 다르며, 이 때문에 결과적으로 practical difference가 발생한다. 
-
 ### 빈도주의자 관점은?
 
 - [빈도주의자 관점](https://en.wikipedia.org/wiki/Frequentist_probability){:target="_blank"}에서는 불확실성을 야기하는 ground truth가 있다는 가정 하에서 inference가 이루어진다.
