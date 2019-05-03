@@ -1,6 +1,6 @@
 ---
 title: "머신러닝에서 베이지안(Bayesian)과 빈도주의자(Frequentist) 접근의 차이"
-date: 2019-01-15 17:00 +0900
+date: 2019-05-03 17:00 +0900
 categories: 
   - ML
   - Theory
