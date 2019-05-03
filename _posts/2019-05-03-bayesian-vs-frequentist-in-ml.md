@@ -8,7 +8,7 @@ tags:
   - bayesian
   - frequentist
   - vs
-publish: false
+published: false
 ---
 
 ##  Basics
