@@ -17,7 +17,7 @@ published: true
 
 - [빈도주의자 관점](https://en.wikipedia.org/wiki/Frequentist_probability){:target="_blank"}에서는 불확실성을 야기하는 ground truth가 있다는 가정 하에서 inference가 이루어진다.
 - 불확실성(Uncertainty) 하에서 일어나는 어떤 이벤트가 있을 때, 빈도주의자 관점에서는 이 이벤트에 대한 데이터를 확률시행(random experiment)의 결과로 보고, 이를 반복하여 관찰해 나온 상대적 빈도(relative frequency)를 해당 이벤트의 불확실성에 대한 척도(measure), 즉 확률(probability)로 본다. 즉, 이 관점 하에서는 확률은 해당 이벤트의 발생가능도(likelihood, propensity, ...)를 표현하는 데 활용된다. 
-- Ground truth를 모수 $\mathcal{T}$로, 데이터를 $\mathcal{D}$로 추상화하면 $p(\mathcal{D}\vert \mathcal{T})$로 표현되는 구조를 활용한 통계적 추정을 하는 것이다. 추정 자체에서는 오차를 고려하기 위해 $\mathcal{D}$에 대한 분포를 나타내는 $p(\mathcal{D})$를 활용하기도 하지만, $\mathcal{T}$는 고정되어 있어 $p(\mathcal{T})$를 고려하진 않는다. 
+- Ground truth를 모수 $\mathcal{T}$로, 데이터를 $\mathcal{D}$로 추상화하면 $p(\mathcal{D}\vert \mathcal{T})$로 표현되는 구조를 활용한 통계적 추정을 하는 것이다. 추정 자체에서는 오차를 고려하기 위해 $\mathcal{D}$에 대한 분포를 나타내는 $p(\mathcal{D})$를 활용하지만, $\mathcal{T}$는 고정되어 있어 $p(\mathcal{T})$를 고려하진 않는다. 
 - 즉, **상대적 빈도를 통해 발생가능도를 추정함으로써 불확실성을 발생시키는 고정된 구조를 해석하는 것**이 빈도주의자 관점의 방식이라 할 수 있을 것이다. 
 - 빈도주의자 관점에서 데이터는 확률시행의 결과이므로 randomness가 있고, 모수는 확률변수가 아닌 고정값이다. 
 
@@ -83,7 +83,7 @@ published: true
   - 사후확률 분포를 그대로 활용하거나 사후확률의 평균이나 중간값을 활용하는 방법도 있지만, MAP 추정을 수행하기 위한 효과적인 알고리즘이 대체로 존재하기 때문에 가장 일반적인 선택이다. 
   - Point estimator이기 때문에 uncertainty에 대한 measure가 없고, 때문에 overfitting을 초래할 수 있다. 
   - 모드는 일반적으로 분포에서 비전형적인(untypical)한 지점이기 때문에 이를 전체 분포에 대한 요약 지표로 활용하는 것은 기본적인 단점이 있다. 
-  - 모수화에 의존한다. 즉, Reparameterization에 invariant하지 않다. 
+  - 모수화에 의존, 즉, Reparameterization에 invariant하지 않다는 문제가 있다. 이를 해결하기 위해 Fisher information을 활용할 수 있다. 
 - 위에서 언급된 MAP의 단점을 보완하기 위해 loss-function을 도입하면 사후확률의 평균이나 중간값을 사용하게 되기도 한다. 
 - 베이지안 Interval estimator로서는 Credible Interval(CI)이나 Highest Posterior Density(HPD)를 주로 활용한다. 
 
@@ -112,7 +112,7 @@ published: true
 - ERM은 드러난 데이터 만으로 분포를 가정해 추정을 하는 방식이기 때문에 overfitting의 위험이 있고 이를 피하기 위해 regularization 을 해야한다.  
   - Regularized risk minimization (RRM): $$\delta_{\lambda}=\mathop{argmin}_{\delta}[R_{emp}(\mathcal{D},\delta) + \lambda C(\delta)]$$
 - 그러나 regularization strength인 $\lambda$를 정하는 문제를 해결해야 한다. 이를 해결하는 방식을 structural risk minimization이라고 부르고, 흔히 Cross validation(CV)와 theoretical upper bounds를 활용한다.  
-  - Theoretical upper bound: $$ p\left(\underset{h \in \mathcal{H}}{\mathop{max}} \lvert R_{emp}(\mathcal{D},h) -R(p_{\ast} , h) \rvert>\epsilon \right) \leq 2dim(\mathcal{H})e^{-2N\epsilon^2}$$
+  - Theoretical upper bound: $$ p\left(\underset{h \in \mathcal{H}}{\mathop{max}} \lvert R_{emp}(\mathcal{D},h) -R(p_{\ast} , h) \rvert>\epsilon \right) \leq 2dim(\mathcal{H})e^{-2N\epsilon^2}​$$
 - ERM과 RRM이 구하기 어려울 경우에는 surrogate loss function을 사용한다. log loss나 hinge loss가 그 예이다. 
 
 
