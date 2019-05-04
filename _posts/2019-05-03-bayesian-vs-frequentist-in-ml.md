@@ -8,7 +8,7 @@ tags:
   - bayesian
   - frequentist
   - vs
-published: false
+published: true
 ---
 
 ##  Basics
@@ -16,12 +16,10 @@ published: false
 ### 빈도주의자 관점은?
 
 - [빈도주의자 관점](https://en.wikipedia.org/wiki/Frequentist_probability){:target="_blank"}에서는 불확실성을 야기하는 ground truth가 있다는 가정 하에서 inference가 이루어진다.
-
 - 불확실성(Uncertainty) 하에서 일어나는 어떤 이벤트가 있을 때, 빈도주의자 관점에서는 이 이벤트에 대한 데이터를 확률시행(random experiment)의 결과로 보고, 이를 반복하여 관찰해 나온 상대적 빈도(relative frequency)를 해당 이벤트의 불확실성에 대한 척도(measure), 즉 확률(probability)로 본다. 즉, 이 관점 하에서는 확률은 해당 이벤트의 발생가능도(likelihood, propensity, ...)를 표현하는 데 활용된다. 
-
-- ground truth를 모수 $\mathcal{T}$로, 데이터를 $\mathcal{D}$로 추상화하면 $p(\mathcal{D}\vert \mathcal{T})$로 표현되는 구조를 활용한 통계적 추정을 하는 것이다. 추정 자체에서는 오차를 고려하기 위해 $\mathcal{D}$에 대한 분포를 나타내는 $p(\mathcal{D})$를 활용하기도 하지만, $\mathcal{T}$는 고정되어 있어 $p(\mathcal{T})$를 고려하진 않는다. (즉, $\mathcal{T}$는 확률변수가 아니다.)
-
+- Ground truth를 모수 $\mathcal{T}$로, 데이터를 $\mathcal{D}$로 추상화하면 $p(\mathcal{D}\vert \mathcal{T})$로 표현되는 구조를 활용한 통계적 추정을 하는 것이다. 추정 자체에서는 오차를 고려하기 위해 $\mathcal{D}$에 대한 분포를 나타내는 $p(\mathcal{D})$를 활용하기도 하지만, $\mathcal{T}$는 고정되어 있어 $p(\mathcal{T})$를 고려하진 않는다. 
 - 즉, **상대적 빈도를 통해 발생가능도를 추정함으로써 불확실성을 발생시키는 고정된 구조를 해석하는 것**이 빈도주의자 관점의 방식이라 할 수 있을 것이다. 
+- 빈도주의자 관점에서 데이터는 확률시행의 결과이므로 randomness가 있고, 모수는 확률변수가 아닌 고정값이다. 
 
 ### 그렇다면 베이지안 관점은?
 
@@ -29,6 +27,7 @@ published: false
 - 불확실성 하에서 일어나는 어떤 이벤트가 있을 때, 관찰자는 이 이벤트가 어떠한 구조의 불확실성을 가지고 있다는 주관적인 가설을 가지고 있는데, 이 가설을 얼마나 신뢰할 수 있느냐를 사전확률(prior)로 나타낸다. 해당 이벤트에 대한 데이터는 발생한 증거(evidence)로서, 관찰자는 가지고 있던 가설 하에서 이 데이터가 얼마나 발생가능했는지(likelihood)를 활용해 사전의 가설을 수정한 새로운 가설을 얻게 되고, 이 새로운 가설에 대한 신뢰도를 사후확률(posterior)로 표현한다. 
 - 사전 가설을 $\mathcal{H}​$로, 데이터를 $\mathcal{D}​$로 추상화하면 $p(\mathcal{H'}) = p(\mathcal{H}\vert \mathcal{D}) \propto p(\mathcal{D}\vert \mathcal{H}) \times p(\mathcal{H})​$로 표현되는 구조를 활용한 통계적 추정을 하는 것이다. $p(\mathcal{H})​$를 prior, $p(\mathcal{D}\vert \mathcal{H})​$를 likelihood, $ p(\mathcal{H}\vert \mathcal{D})​$를 posterior로 부른다. 
 - 즉, **불확실성을 발생시키는 구조에 대한 가설의 신뢰도를 확률로 정량화 하고 데이터를 통해 이 가설을 수정해 나가는 것**이 베이지안 관점의 방식이라 할 수 있다. 
+- 빈도주의자 관점과 정반대로 베이지안에서 데이터는 발생한 증거이므로 randomness 가 없고, 모수는 확률변수로 표현된다. 
 
 ------
 
@@ -40,9 +39,9 @@ published: false
 
 - 다른 곳에서도 많이 인용하는 예로, 의사에게 진단을 받는 상황을 생각해보자. 병원에 가면 의사가 이런저런 진찰을 한 뒤 진단을 내려준다. 실제 엊그제도 골반이 아파 병원에 갔는데, 의사가 이것저것을 물어보고 엑스레이를 잔뜩 찍어 보더니 "내전근 염증인 것 같다"는 진단을 내려줬다. 
 
-  아마도 의사~~(가 영혼을 갈아 넣어 공부하던 의대 시절 읽었던 교재를 작성한 누군가)~~는 비슷한 증상을 보이는 사례들 중 내전근에 염증이 있었는 경우들의 빈도를 확인하고, 이 샘플들을 토대로 이 사례를 나타나게 하는 모수를 추정하여 "이런 증상을 보이는 경우 중 95%의 확률로 내전근에 염증이 있었다"와 같이 결론을 내릴 수 있다. 그렇다면 의사는 빈도주의자적 관점을 취한 것이다. 
+- 의사는 나를 포함한 비슷한 증상을 보이는 환자들을 여러명 치료한 이력이 있을 것이다. 이러한 사례들 중 내전근에 염증이 있었는 경우들의 빈도가 95%였다고 하자. 의사는 이 증상을 나타나게 하는 어떤 메카니즘이 있으며, 그 메카니즘(확률 모형) 하에서 일정한 빈도(모수) 만큼의 환자가 이러한 증상을 보이게 된다고 판단할 수 있다. 기존 환자들의 빈도를 토대로 의사는 해당 빈도를 95%로 추정하고, 이에 따라 "환자분은 95%의 확률로 내전근에 염증이 있을 것이다"라고 내게 말해준다. 그렇다면 의사는 빈도주의자적 관점을 취한 것이다. 
 
-  그러나 나는 의심이 많고, 영 의사들을 신뢰하지 못한다. 내 상황이 빈도주의자적 관점에서 '95%의 발생가능도를 갖는 상황'이라는 걸 그대로 받아들이지 못하고, 의사의 저 말을 신뢰할 수 있는지 생각한다. 의사 말을 들었지만 효과가 없었던 예전 경험도 자꾸 떠오른다. 나는 "의사의 저 진단이 50% 정도 신뢰할 수 있다"고 생각한다. 이건 베이지안 관점이라 할 수 있다. 
+  의사는 다른 방식으로 이 문제에 접근을 할 수도 있다. 길고 긴 의대 시절을 통해 의사는 나와 같은 증상을 갖고 있을 때 원인이 내전근 염증일 확률이 90%라는 사전 지식(사전 확률)을 이미 갖고 있다. 공부를 마치고 실제로 환자들을 만나보니 내전근 염증이 있을 때 99%의 빈도로 해당 증상이 있었다.(발생가능도) 이에 의사는 90%라고 배웠던 사전 지식을 수정해서 해당 증상을 보일 때 95%정도 확률로 내전근에 염증이 있을 것으로 생각한다. (사후 확률) 이러한 경험 하에서 의사는 "환자분은 95%의 확률로 내전근에 염증이 있을 것이다"라고 내게 말해준다. 그렇다면 의사는 베이지안 관점을 취한 것이다. 
 
 ------
 
@@ -80,8 +79,8 @@ published: false
 
 #### - 베이지안
 
-- 베이지안 관점에서는 사후확률을 활용하고, 그 중 가장 유명한 것은 모수에 대한 point estimator로서 사후확률의 최빈값(mode)을 이용하는 maximum a posteriori (MAP) 
-  - 사후확률의 평균이나 중간값을 활용하는 방법도 있지만, MAP 추정을 수행하기 위한 효과적인 알고리즘이 대체로 존재하기 때문에 가장 일반적인 선택이다. 
+- 베이지안 관점에서는 사후확률을 활용하고, 그 중 가장 유명한 것은 모수에 대한 point estimator로서 사후확률의 최빈값(mode)을 이용하는 maximum a posteriori (MAP) 추정이 있다. 
+  - 사후확률 분포를 그대로 활용하거나 사후확률의 평균이나 중간값을 활용하는 방법도 있지만, MAP 추정을 수행하기 위한 효과적인 알고리즘이 대체로 존재하기 때문에 가장 일반적인 선택이다. 
   - Point estimator이기 때문에 uncertainty에 대한 measure가 없고, 때문에 overfitting을 초래할 수 있다. 
   - 모드는 일반적으로 분포에서 비전형적인(untypical)한 지점이기 때문에 이를 전체 분포에 대한 요약 지표로 활용하는 것은 기본적인 단점이 있다. 
   - 모수화에 의존한다. 즉, Reparameterization에 invariant하지 않다. 
@@ -95,7 +94,7 @@ published: false
 #### - 빈도주의자
 
 - 빈도주의자의 경우 risk function을 결정 이론에 활용한다. 
-  - risk function: $ \displaystyle R(\theta^{\ast}, \delta ) \triangleq \mathbb{E}_{p(\tilde{\mathcal{D}}\vert\theta^{\ast})} \left[ L(\theta^{\ast},\delta(\tilde{\mathcal{D}})) \right] = \int L(\theta^{\ast}, \delta(\tilde{\mathcal{D}}))p(\tilde{\mathcal{D}}\vert \theta^{\ast})d\tilde{\mathcal{D}} $
+  - risk function: $ \displaystyle R(\theta^{\ast}, \delta ) \triangleq \mathbb{E}_{p(\tilde{\mathcal{D}}\vert\theta^{\ast})} \left[ L(\theta^{\ast},\delta(\tilde{\mathcal{D}})) \right] = \int L(\theta^{\ast}, \delta(\tilde{\mathcal{D}}))p(\tilde{\mathcal{D}}\vert \theta^{\ast})d\tilde{\mathcal{D}} ​$
   - 일례로 $\theta^{\ast}$를 안다는 가정하에 L2 loss를 생각하면 위 식은 MSE가 되는 것을 알 수 있다. 
 - 문제는 이때 우리가  $\theta^{\ast}$을 알지 못한다는 것이다. 따라서 $R(\theta^{\ast}, \delta )$를 $R(\delta)$의 형태로 만들어야 한다. 이를 해결하는 방법으로 bayes risk, minimax risk 등이 있다. 
   - Bayes risk: $R_B(\delta) \triangleq \mathbb{E}[R(\theta^{\ast}, \delta)]=\displaystyle \int R(\theta^{\ast}, \delta)p(\theta^{\ast} )d\theta^{\ast}$
@@ -131,14 +130,14 @@ $$BIC \triangleq \mathop{log}p(\mathcal{D}\vert \hat{\theta}_{MLE}) - \frac{dof(
 
 - 모수적 모델을 가정하고 parameter를 $\theta$, hyperparameter를 $\eta$로 표현할 때, 
 
-  $$\displaystyle p(\theta\vert \mathcal{D}) = \frac{p(\mathcal{D}\vert \theta)p(\theta)}{p(\mathcal{D})}= \frac{p(\mathcal{D}\vert \theta)}{p(\mathcal{D})}\int{p(\theta\vert \eta)p(\eta)d\eta} $$  
+  $$\displaystyle p(\theta\vert \mathcal{D}) = \frac{p(\mathcal{D}\vert \theta)p(\theta)}{p(\mathcal{D})}= \frac{p(\mathcal{D}\vert \theta)}{p(\mathcal{D})}\int{p(\theta\vert \eta)p(\eta)d\eta} ​$$  
   로 표현되는 HBM의 형식에서 적분이 어렵기 때문에,   
   
   $$\displaystyle p(\theta\vert \mathcal{D}) = \int {p(\theta\vert  \eta,\mathcal{D})p(\eta\vert \mathcal{D})d\eta} = \int{\frac{p(\mathcal{D}\vert \theta)p(\theta\vert \eta)}{p(\mathcal{D}\vert \eta)}p(\eta\vert \mathcal{D})d\eta} ​$$   
   $$\displaystyle p(\eta\vert \mathcal{D})=\int{p(\eta\vert \theta)p(\theta\vert \mathcal{D})d\theta}​$$  
 
-  와 같이 표현하고,  $\eta^{\ast} = \mathop{argmax}  p(\eta\vert \mathcal{D})​$를 추정하여,   
-  $$p(\theta\vert \mathcal{D})\simeq \frac{p(\mathcal{D}\vert \theta)p(\theta\vert \eta^{\ast})}{p(\mathcal{D}\vert \eta^{\ast})} ​$$  
+  와 같이 표현하고,  $\eta^{\ast} = \mathop{argmax}  p(\eta\vert \mathcal{D})$를 추정하여,   
+  $$p(\theta\vert \mathcal{D})\simeq \frac{p(\mathcal{D}\vert \theta)p(\theta\vert \eta^{\ast})}{p(\mathcal{D}\vert \eta^{\ast})} $$  
   로 나타내면 EM algorithm으로 사후확률이 추정가능하다. 이 과정을 EBM이라 부른다. 
 
 - $\eta^{\ast}​$의 추정에서 균등사전확률을 가정하면, $\eta^{\ast} = \mathop{argmax}  p(\eta\vert \mathcal{D}) =  \mathop{argmax}  p(\mathcal{D}\vert \eta) ​$ 가 된다. 따라서 EBM을 type II maximum likelihood라고 부르며, ML에서는 evidence procedure라고 부르기도 한다. 또한, EBM은 prior가 data에 독립적이어야 한다는 원칙을 위배함으로써 계산적인 효용을 얻는 방식이다. 
