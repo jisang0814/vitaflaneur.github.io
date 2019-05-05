@@ -25,7 +25,7 @@ published: true
 
 - [베이지안 관점](https://en.wikipedia.org/wiki/Bayesian_probability){:target="_blank"}에서는 불확실성을 야기하는 구조에 대한 주관적인 믿음(subjective belief)이 있고, 이를 데이터를 통해 수정하는 방식으로 inference가 이루어진다. 
 - 불확실성 하에서 일어나는 어떤 이벤트가 있을 때, 관찰자는 이 이벤트가 어떠한 구조의 불확실성을 가지고 있다는 주관적인 가설을 가지고 있는데, 이 가설을 얼마나 신뢰할 수 있느냐를 사전확률(prior)로 나타낸다. 해당 이벤트에 대한 데이터는 발생한 증거(evidence)로서, 관찰자는 가지고 있던 가설 하에서 이 데이터가 얼마나 발생가능했는지(likelihood)를 활용해 사전의 가설을 수정한 새로운 가설을 얻게 되고, 이 새로운 가설에 대한 신뢰도를 사후확률(posterior)로 표현한다. 
-- 사전 가설을 $\mathcal{H}​$로, 데이터를 $\mathcal{D}​$로 추상화하면 $p(\mathcal{H'}) = p(\mathcal{H}\vert \mathcal{D}) \propto p(\mathcal{D}\vert \mathcal{H}) \times p(\mathcal{H})​$로 표현되는 구조를 활용한 통계적 추정을 하는 것이다. $p(\mathcal{H})​$를 prior, $p(\mathcal{D}\vert \mathcal{H})​$를 likelihood, $ p(\mathcal{H}\vert \mathcal{D})​$를 posterior로 부른다. 
+- 사전 가설을 $\mathcal{H}$로, 데이터를 $\mathcal{D}$로 추상화하면 $p(\mathcal{H'}) = p(\mathcal{H}\vert \mathcal{D}) \propto p(\mathcal{D}\vert \mathcal{H}) \times p(\mathcal{H})$로 표현되는 구조를 활용한 통계적 추정을 하는 것이다. $p(\mathcal{H})$를 prior, $p(\mathcal{D}\vert \mathcal{H})$를 likelihood, $ p(\mathcal{H}\vert \mathcal{D})$를 posterior로 부른다. 
 - 즉, **불확실성을 발생시키는 구조에 대한 가설의 신뢰도를 확률로 정량화 하고 데이터를 통해 이 가설을 수정해 나가는 것**이 베이지안 관점의 방식이라 할 수 있다. 
 - 빈도주의자 관점과 정반대로 베이지안에서 데이터는 발생한 증거이므로 randomness 가 없고, 모수는 확률변수로 표현된다. 
 
@@ -69,9 +69,9 @@ published: true
 
 - 빈도주의자 통계학의 추정을 언급하기 위해서는 우선 sampling distribution에 대해서 언급을 해야 한다. sampling distribution을 계산하기 위해 크게 두 가지 접근법이 있는데, Large sample theory로 analytic하게 접근하거나 bootstrap과 같은 Monte Carlo(MC) 테크닉을 사용하는 것이다. 	
   - 다음 함수들은 빈도주의자 관점과 large sample theory에서 활용되는 함수들이며 알아둘 필요가 있다. 
-    - score function: $ s(\hat{\theta}) \triangleq \nabla \mathop{log}p(\mathcal{D}\vert \theta)\vert _{\hat{\theta}}​$, log-likelihood의 $\hat{\theta}​$에서의 기울기. 
+    - score function: $ s(\hat{\theta}) \triangleq \nabla \mathop{log}p(\mathcal{D}\vert \theta)\vert _{\hat{\theta}}$, log-likelihood의 $\hat{\theta}$에서의 기울기. 
     - observed information matrix: $ J(\hat{\theta}(\mathcal{D})) \triangleq -\nabla s(\hat{\theta}) =  - \nabla^2 \mathop{log}p(\mathcal{D}\vert \theta)\vert_{\hat{\theta}}$, negative score function의 $\hat{\theta}$에서의 기울기, 혹은 negative log-likelihood의  $\hat{\theta}$에서의 Hessian. 
-    - Fisher information matrix: $ I_N (\hat{\theta}\vert \theta^{\ast}) \triangleq \mathop{var}_{\theta^{\ast}} \left[ \frac{d}{d\theta} \mathop{log} p(\mathcal{D}\vert \theta) \vert _{\hat{\theta}} \right] \overset{\hat{\theta}=MLE}{=} \mathbb{E} [ J(\hat{\theta}\vert \mathcal{D})] ​$
+    - Fisher information matrix: $ I_N (\hat{\theta}\vert \theta^{\ast}) \triangleq \mathop{var}_{\theta^{\ast}} \left[ \frac{d}{d\theta} \mathop{log} p(\mathcal{D}\vert \theta) \vert _{\hat{\theta}} \right] \overset{\hat{\theta}=MLE}{=} \mathbb{E} [ J(\hat{\theta}\vert \mathcal{D})] $
 
 - 이렇게 구한 sampling distribution을 활용해서 Maximum Likelihood Estimator(MLE)로 point estimation을 하거나 confidence interval을 구할 수 있다. 
 
@@ -94,17 +94,17 @@ published: true
 #### - 빈도주의자
 
 - 빈도주의자의 경우 risk function을 결정 이론에 활용한다. 
-  - risk function: $ \displaystyle R(\theta^{\ast}, \delta ) \triangleq \mathbb{E}_{p(\tilde{\mathcal{D}}\vert\theta^{\ast})} \left[ L(\theta^{\ast},\delta(\tilde{\mathcal{D}})) \right] = \int L(\theta^{\ast}, \delta(\tilde{\mathcal{D}}))p(\tilde{\mathcal{D}}\vert \theta^{\ast})d\tilde{\mathcal{D}} ​$
-  - 일례로 $\theta^{\ast}$를 안다는 가정하에 L2 loss를 생각하면 위 식은 MSE가 되는 것을 알 수 있다. 
+  - risk function: $ \displaystyle R(\theta^{\ast}, \delta ) \triangleq \mathbb{E}_{p(\tilde{\mathcal{D}}\vert\theta^{\ast})} \left[ L(\theta^{\ast},\delta(\tilde{\mathcal{D}})) \right] = \int L(\theta^{\ast}, \delta(\tilde{\mathcal{D}}))p(\tilde{\mathcal{D}}\vert \theta^{\ast})d\tilde{\mathcal{D}} $
 - 문제는 이때 우리가  $\theta^{\ast}$을 알지 못한다는 것이다. 따라서 $R(\theta^{\ast}, \delta )$를 $R(\delta)$의 형태로 만들어야 한다. 이를 해결하는 방법으로 bayes risk, minimax risk 등이 있다. 
   - Bayes risk: $R_B(\delta) \triangleq \mathbb{E}[R(\theta^{\ast}, \delta)]=\displaystyle \int R(\theta^{\ast}, \delta)p(\theta^{\ast} )d\theta^{\ast}$
     $\delta_B \triangleq \underset{\delta}{\mathop{argmin}} R_B(\delta)$  
     Bayes risk는 위와 같이 모든 truth parameter에 대한 average risk로 정의된다. 이를 최소하여 얻는 Bayes estimator는 posterior expected loss를 최소화 함으로써도 구할 수 있다. 
-  - Minimax risk: $R_{max}(\delta)\triangleq \underset{\theta^{\ast}}{max}R(\theta^{\ast},\delta)​$  
-    $\delta_{MM} \triangleq \underset{\delta}{\mathop{argmin}} R_{max}(\delta)​$
+  - Minimax risk: $R_{max}(\delta)\triangleq \underset{\theta^{\ast}}{max}R(\theta^{\ast},\delta)$  
+    $\delta_{MM} \triangleq \underset{\delta}{\mathop{argmin}} R_{max}(\delta)$
 - 어떤 estimator는 가능한 모든 $\theta$에 대해 다른 estimator에 비해 큰 risk를 발생시킨다. 즉, dominate 당할 수 있다.  어느 estimator가 다른 estimator에게 dominate 되지 않을 떄, admissible하다고 한다. 그러나 admissibility 만으로는 estimator에 제약을 걸기는 충분하지 않다. Stein's paradox와 같은 경우를 통해 이를 확인할 수 있다. 
 -  빈도주의자 결정 이론이 최적의 estimator를 선택하는 자동적인 방법을 제공하지 않기 때문에, 휴리스틱들을 사용해서 이를 보충한다. 이들은 consistency, unbiasedness, efficiency 등이며, 이런 성질을 갖는 estimator가 좋은 것으로 간주된다. 다만, bias-variance tradeoff 등의 현상을 통해 위 휴리스틱들을 동시에 만족하는 estimator를 찾을 수는 없다는 것이 알려져 있다. 
-- 빈도주의자 결정 이론에서 risk의 계산은 실제 데이터 $\mathcal{D}$의 분포를 알아야 수행될 수 있다. 이를 알 수 없는 경우가 많기 때문에 $L(\theta, \delta(\mathcal{D}))$가 아닌 $L(y, \delta(x))$를 사용해 정의한다. 이때 $y$ 는 참이지만 알려지지 않은 반응값이고, $\delta(x)$는 입력 x에 대해 주어진 예측값이다. $p_{\ast}$ 가 unknown nature's distribution이라 가정하면 빈도주의자 관점의 리스크는 아래와 같이 표현되고, 이를 empirical distribution으로 대체하는 empirical risk를 정의할 수 있다.   
+- 빈도주의자 결정 이론에서 risk의 계산은 실제 데이터 $\mathcal{D}$의 분포를 알아야 수행될 수 있다. 이를 알 수 없는 경우가 많기 때문에 $L(\theta, \delta(\mathcal{D}))$가 아닌 $L(y, \delta(x))$를 사용해 정의한다. 이때 $y$ 는 참이지만 알려지지 않은 반응값이고, $\delta(x)$는 입력 x에 대해 주어진 예측값이다. Unsupervised case일 경우 $L(y, \delta(x))$ 대신 $L(x, \delta(x))$를 활용하는데, 대표적인 예가 reconstruction error이다. 
+- $p_{\ast}$ 가 unknown nature's distribution이라 가정하면 빈도주의자 관점의 리스크는 아래와 같이 표현되고, 이를 empirical distribution으로 대체하는 empirical risk를 정의할 수 있다.   
   - Frequentist risk: $$R(p_{\ast}, \delta ) \triangleq \mathbb{E}_{(\mathbf{x},y) \sim p_{\ast}} \left[ L(y, \delta(\mathbf{x}))\right] = \underset{\mathbf{x}}{\sum}\underset{\mathbf{y}}{\sum}L(y, \delta(\mathbf{x})) p_{\ast}(\mathbf{x},y)$$  
   - Empirical risk: $$R_{emp}(\mathcal{D}) \triangleq R(p_{amp}, \delta ) = \frac{1}{N} \sum_{i=1}^{N}L(y_i, \delta(\mathbf{x}_i)) $$  
   - Empirical risk minimization (ERM): $$\delta_{ERM}(\mathcal{D}) = \mathop{argmin}_{\delta} R_{emp}(\mathcal{D},\delta)$$  
@@ -112,7 +112,7 @@ published: true
 - ERM은 드러난 데이터 만으로 분포를 가정해 추정을 하는 방식이기 때문에 overfitting의 위험이 있고 이를 피하기 위해 regularization 을 해야한다.  
   - Regularized risk minimization (RRM): $$\delta_{\lambda}=\mathop{argmin}_{\delta}[R_{emp}(\mathcal{D},\delta) + \lambda C(\delta)]$$
 - 그러나 regularization strength인 $\lambda$를 정하는 문제를 해결해야 한다. 이를 해결하는 방식을 structural risk minimization이라고 부르고, 흔히 Cross validation(CV)와 theoretical upper bounds를 활용한다.  
-  - Theoretical upper bound: $$ p\left(\underset{h \in \mathcal{H}}{\mathop{max}} \lvert R_{emp}(\mathcal{D},h) -R(p_{\ast} , h) \rvert>\epsilon \right) \leq 2dim(\mathcal{H})e^{-2N\epsilon^2}​$$
+  - Theoretical upper bound: $$ p\left(\underset{h \in \mathcal{H}}{\mathop{max}} \lvert R_{emp}(\mathcal{D},h) -R(p_{\ast} , h) \rvert>\epsilon \right) \leq 2dim(\mathcal{H})e^{-2N\epsilon^2}$$
 - ERM과 RRM이 구하기 어려울 경우에는 surrogate loss function을 사용한다. log loss나 hinge loss가 그 예이다. 
 
 
@@ -121,7 +121,7 @@ published: true
 
 - 결정 이론에 대한 베이지안의 접근은 사후 예상 손실(posterior expected loss)을 최소화 하는 것이다. 0-1 loss일 경우 MAP가, L2 loss의 경우 posterior mean이, L1 loss일 경우 posterior median이 최적의 결정이 된다. KL loss를 사용할 수도 있다. 
 
-- Model selection의 경우 모든 가능한 모델에 대해서 CV을 해서 구할 수도 있다. 그러나 그보다는 Bayesian model selection을 활용하는 것이 효율적일 수 있다.  즉, $p(m\vert \mathcal{D}) = \frac{p(\mathcal{D}\vert m)p(m)}{\sum_{m\in\mathcal{M}}{p(m,\mathcal{D})}}​$에서부터 MAP, $\hat{m}=\mathop{argmax} p(m\vert \mathcal{D})​$를 계산하는 것이다. 특히, 모델이 uniform prior를 가지고 있다고 가정하면, $\hat{m}=\mathop{argmax} p(m\vert \mathcal{D})=\mathop{argmax} p(\mathcal{D}\vert m) =\mathop{argmax}\int p(\mathcal{D}\vert \theta)p(\theta\vert m) d\theta ​$ 와 같이 쓸 수 있다. 이때 사용된 적분을 marginal likelihood라고 부르며, 이 방식으로 model selection을 할 경우 무조건 복잡한 모델이 선호되는 걸 막는 Bayesian's Occam's razor 효과를 갖는다. 
+- Model selection의 경우 모든 가능한 모델에 대해서 CV을 해서 구할 수도 있다. 그러나 그보다는 Bayesian model selection을 활용하는 것이 효율적일 수 있다.  즉, $p(m\vert \mathcal{D}) = \frac{p(\mathcal{D}\vert m)p(m)}{\sum_{m\in\mathcal{M}}{p(m,\mathcal{D})}}$에서부터 MAP, $\hat{m}=\mathop{argmax} p(m\vert \mathcal{D})$를 계산하는 것이다. 특히, 모델이 uniform prior를 가지고 있다고 가정하면, $\hat{m}=\mathop{argmax} p(m\vert \mathcal{D})=\mathop{argmax} p(\mathcal{D}\vert m) =\mathop{argmax}\int p(\mathcal{D}\vert \theta)p(\theta\vert m) d\theta $ 와 같이 쓸 수 있다. 이때 사용된 적분을 marginal likelihood라고 부르며, 이 방식으로 model selection을 할 경우 무조건 복잡한 모델이 선호되는 걸 막는 Bayesian's Occam's razor 효과를 갖는다. 
 
 - 위 marginal likelihood의 적분은 계산하기 어려운 경우가 많다. 따라서 이를 근사하여 사용하곤 하는데, 가장 잘 알려진 방법은 Bayesian Information Criterion (BIC)을 활용하는 것이다. 
 $$BIC \triangleq \mathop{log}p(\mathcal{D}\vert \hat{\theta}_{MLE}) - \frac{dof(\hat{\theta}_{MLE})}{2} \mathop{log}N \approx \mathop{log}p(\mathcal{D})$$
@@ -130,23 +130,25 @@ $$BIC \triangleq \mathop{log}p(\mathcal{D}\vert \hat{\theta}_{MLE}) - \frac{dof(
 
 - 모수적 모델을 가정하고 parameter를 $\theta$, hyperparameter를 $\eta$로 표현할 때, 
 
-  $$\displaystyle p(\theta\vert \mathcal{D}) = \frac{p(\mathcal{D}\vert \theta)p(\theta)}{p(\mathcal{D})}= \frac{p(\mathcal{D}\vert \theta)}{p(\mathcal{D})}\int{p(\theta\vert \eta)p(\eta)d\eta} ​$$  
+  $$\displaystyle p(\theta\vert \mathcal{D}) = \frac{p(\mathcal{D}\vert \theta)p(\theta)}{p(\mathcal{D})}= \frac{p(\mathcal{D}\vert \theta)}{p(\mathcal{D})}\int{p(\theta\vert \eta)p(\eta)d\eta} $$  
   로 표현되는 HBM의 형식에서 적분이 어렵기 때문에,   
   
-  $$\displaystyle p(\theta\vert \mathcal{D}) = \int {p(\theta\vert  \eta,\mathcal{D})p(\eta\vert \mathcal{D})d\eta} = \int{\frac{p(\mathcal{D}\vert \theta)p(\theta\vert \eta)}{p(\mathcal{D}\vert \eta)}p(\eta\vert \mathcal{D})d\eta} ​$$   
-  $$\displaystyle p(\eta\vert \mathcal{D})=\int{p(\eta\vert \theta)p(\theta\vert \mathcal{D})d\theta}​$$  
+  $$\displaystyle p(\theta\vert \mathcal{D}) = \int {p(\theta\vert  \eta,\mathcal{D})p(\eta\vert \mathcal{D})d\eta} = \int{\frac{p(\mathcal{D}\vert \theta)p(\theta\vert \eta)}{p(\mathcal{D}\vert \eta)}p(\eta\vert \mathcal{D})d\eta} $$   
+  $$\displaystyle p(\eta\vert \mathcal{D})=\int{p(\eta\vert \theta)p(\theta\vert \mathcal{D})d\theta}$$  
 
   와 같이 표현하고,  $\eta^{\ast} = \mathop{argmax}  p(\eta\vert \mathcal{D})$를 추정하여,   
   $$p(\theta\vert \mathcal{D})\simeq \frac{p(\mathcal{D}\vert \theta)p(\theta\vert \eta^{\ast})}{p(\mathcal{D}\vert \eta^{\ast})} $$  
   로 나타내면 EM algorithm으로 사후확률이 추정가능하다. 이 과정을 EBM이라 부른다. 
 
-- $\eta^{\ast}​$의 추정에서 균등사전확률을 가정하면, $\eta^{\ast} = \mathop{argmax}  p(\eta\vert \mathcal{D}) =  \mathop{argmax}  p(\mathcal{D}\vert \eta) ​$ 가 된다. 따라서 EBM을 type II maximum likelihood라고 부르며, ML에서는 evidence procedure라고 부르기도 한다. 또한, EBM은 prior가 data에 독립적이어야 한다는 원칙을 위배함으로써 계산적인 효용을 얻는 방식이다. 
+- $\eta^{\ast}$의 추정에서 균등사전확률을 가정하면, $\eta^{\ast} = \mathop{argmax}  p(\eta\vert \mathcal{D}) =  \mathop{argmax}  p(\mathcal{D}\vert \eta) $ 가 된다. 따라서 EBM을 type II maximum likelihood라고 부르며, ML에서는 evidence procedure라고 부르기도 한다. 또한, EBM은 prior가 data에 독립적이어야 한다는 원칙을 위배함으로써 계산적인 효용을 얻는 방식이다. 
 
 
 
 ## P.S.
 
-더 깊은 수준의 정리를 원하시면 [Jake VanderPlas 버전의 정리](http://jakevdp.github.io/blog/2014/03/11/frequentism-and-bayesianism-a-practical-intro/){:target="_blank"}가 읽어볼 만합니다. 5개의 글로 나누어져 있고, 꽤나 자세합니다. 그냥 이 블로그를 복붙하고 번역하는 게 더 낫지 않았나 하는 생각도... 뭐, 짧은 버전의 메리트도 있는 법이니깐...
+더 깊은 수준의 정리를 원하시면 [Jake VanderPlas 버전의 정리](http://jakevdp.github.io/blog/2014/03/11/frequentism-and-bayesianism-a-practical-intro/){:target="_blank"}가 읽어볼 만합니다. 5개의 글로 나누어져 있고, 꽤나 자세합니다. 그냥 이 블로그를 복붙하고 번역하는 게 더 낫지 않았나 하는 생각도... 뭐, 짧은 버전의 메리트도 있는 법이니깐… 
+
+또한, 이 포스팅은 기본적으로 [Murphy][Murphy's ML Book] 책의 흐름을 따라가기도 하고 현재 제 의견도 반영하기도 하다보니 은연 중에 ML에서는 베이지안이 더 적합한 것으로 표현하고 있는데, [A Fervent Defense of Frequentist Statistics][A Fervent Defense of Frequentist Statistics]란 포스팅을 한 번 읽어보시면 빈도주의자 쪽의 디펜스도 접하실 수 있습니다. :)
 
 ------
 
@@ -157,6 +159,7 @@ $$BIC \triangleq \mathop{log}p(\mathcal{D}\vert \hat{\theta}_{MLE}) - \frac{dof(
 3. Jake VanderPlas의 [blog](http://jakevdp.github.io/blog/2015/08/07/frequentism-and-bayesianism-5-model-selection/)와 [paper](https://arxiv.org/abs/1411.5018){:target="_blank"}
 4. [데이터 사이언스 스쿨 - 확률의 의미 ](https://datascienceschool.net/view-notebook/9605664e26a0411b88f60e4ba9521dd9/){:target="_blank"}
 5. Researcgate의 [한 thread](https://www.researchgate.net/post/What_is_the_difference_between_the_Bayesian_and_frequentist_approaches){:target="_blank"}
+6. [A Fervent Defense of Frequentist Statistics](https://www.lesswrong.com/posts/KdwP5i6N4E4q6BGkr/a-fervent-defense-of-frequentist-statistics){:target="_blank"}
 
 
 
