@@ -148,7 +148,7 @@ $$BIC \triangleq \mathop{log}p(\mathcal{D}\vert \hat{\theta}_{MLE}) - \frac{dof(
 
 더 깊은 수준의 정리를 원하시면 [Jake VanderPlas 버전의 정리](http://jakevdp.github.io/blog/2014/03/11/frequentism-and-bayesianism-a-practical-intro/){:target="_blank"}가 읽어볼 만합니다. 5개의 글로 나누어져 있고, 꽤나 자세합니다. 그냥 이 블로그를 복붙하고 번역하는 게 더 낫지 않았나 하는 생각도... 뭐, 짧은 버전의 메리트도 있는 법이니깐… 
 
-또한, 이 포스팅은 기본적으로 [Murphy][Murphy's ML Book] 책의 흐름을 따라가기도 하고 현재 제 의견도 반영하기도 하다보니 은연 중에 ML에서는 베이지안이 더 적합한 것으로 표현하고 있는데, [A Fervent Defense of Frequentist Statistics][A Fervent Defense of Frequentist Statistics]란 포스팅을 한 번 읽어보시면 빈도주의자 쪽의 디펜스도 접하실 수 있습니다. :)
+또한, 이 포스팅은 기본적으로 [Murphy](Murphy's ML Book) 책의 흐름을 따라가기도 하고 현재 제 의견도 반영하기도 하다보니 은연 중에 ML에서는 베이지안이 더 적합한 것으로 표현하고 있는데, [A Fervent Defense of Frequentist Statistics](A Fervent Defense of Frequentist Statistics)란 포스팅을 한 번 읽어보시면 빈도주의자 쪽의 디펜스도 접하실 수 있습니다. :)
 
 ------
 
